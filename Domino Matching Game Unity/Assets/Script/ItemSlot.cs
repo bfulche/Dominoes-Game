@@ -5,8 +5,8 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler {
 
-    GameManager gm;
-    public List<GameObject> testList = new List<GameObject>();
+    //public List<GameObject> testList = new List<GameObject>();
+    public GameObject currentCard;
 
     
 
@@ -16,7 +16,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler {
         if (eventData.pointerDrag != null) {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
             Debug.Log("Dropped Object was:" + eventData.pointerDrag);
-            testList.Add(eventData.pointerDrag);
+            //testList.Add(eventData.pointerDrag);
+            currentCard = eventData.pointerDrag;
 
 
 

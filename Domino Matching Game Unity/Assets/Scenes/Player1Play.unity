@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 253226198}
   m_Layer: 5
   m_Name: GreenPentagon_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -467,7 +467,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33665cede0435af4cab8db8ff30b9ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  cardList: []
+  slotList: []
 --- !u!1 &852411813
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,7 +483,7 @@ GameObject:
   - component: {fileID: 852411815}
   m_Layer: 5
   m_Name: Empty02_UI
-  m_TagString: Untagged
+  m_TagString: emptySlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  currentCard: {fileID: 0}
 --- !u!114 &852411816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -570,7 +571,7 @@ GameObject:
   - component: {fileID: 874594837}
   m_Layer: 5
   m_Name: PurpleTriangle_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -794,7 +795,7 @@ GameObject:
   - component: {fileID: 1170487711}
   m_Layer: 5
   m_Name: BlueSquare_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -893,7 +894,7 @@ GameObject:
   - component: {fileID: 1518550206}
   m_Layer: 5
   m_Name: YellowDiamond_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,7 +993,7 @@ GameObject:
   - component: {fileID: 1626886896}
   m_Layer: 5
   m_Name: OrangeMoon_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1167,7 +1168,7 @@ GameObject:
   - component: {fileID: 1801571176}
   m_Layer: 5
   m_Name: Empty03_UI
-  m_TagString: Untagged
+  m_TagString: emptySlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1203,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  currentCard: {fileID: 0}
 --- !u!114 &1801571177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1254,7 +1255,7 @@ GameObject:
   - component: {fileID: 1883024080}
   m_Layer: 5
   m_Name: Empty01_UI
-  m_TagString: Untagged
+  m_TagString: emptySlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1326,7 +1327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  currentCard: {fileID: 0}
 --- !u!1 &1976763971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,7 +1471,7 @@ GameObject:
   - component: {fileID: 2030052340}
   m_Layer: 5
   m_Name: Empty05_UI
-  m_TagString: Untagged
+  m_TagString: emptySlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1506,7 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  currentCard: {fileID: 0}
 --- !u!114 &2030052341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1558,7 +1559,7 @@ GameObject:
   - component: {fileID: 2097637913}
   m_Layer: 5
   m_Name: RedCircle_UI
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1656,7 +1657,7 @@ GameObject:
   - component: {fileID: 2145045089}
   m_Layer: 5
   m_Name: Empty04_UI
-  m_TagString: Untagged
+  m_TagString: emptySlots
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1692,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testList: []
+  currentCard: {fileID: 0}
 --- !u!114 &2145045090
 MonoBehaviour:
   m_ObjectHideFlags: 0
