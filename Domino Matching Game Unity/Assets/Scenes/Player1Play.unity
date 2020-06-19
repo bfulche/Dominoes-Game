@@ -467,8 +467,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33665cede0435af4cab8db8ff30b9ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardList: []
-  slotList: []
+  selectedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  slot1: {fileID: 1883024076}
+  slot2: {fileID: 852411813}
+  slot3: {fileID: 1801571174}
+  slot4: {fileID: 2145045087}
+  slot5: {fileID: 2030052338}
 --- !u!1 &852411813
 GameObject:
   m_ObjectHideFlags: 0

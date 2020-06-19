@@ -9,4 +9,13 @@ public class NextScene : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void Back2()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+    public void Back()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }

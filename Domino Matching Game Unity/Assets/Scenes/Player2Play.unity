@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 0}
 --- !u!114 &6767844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 0}
 --- !u!114 &388194634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 0}
 --- !u!114 &674120491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,6 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 0}
 --- !u!114 &1213464247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -690,6 +694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cdec942fe438d14e8510a354b8e51b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCard: {fileID: 0}
 --- !u!114 &1365267306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1611,19 +1616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33665cede0435af4cab8db8ff30b9ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - {fileID: 1188448123}
-  - {fileID: 1557675348}
-  - {fileID: 1790154510}
-  - {fileID: 1781127529}
-  - {fileID: 2105707681}
-  - {fileID: 1866271112}
-  emptySlots:
-  - {fileID: 6767841}
-  - {fileID: 388194631}
-  - {fileID: 674120488}
-  - {fileID: 1213464244}
-  - {fileID: 1365267303}
+  selectedCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &2105707681
 GameObject:
   m_ObjectHideFlags: 0
