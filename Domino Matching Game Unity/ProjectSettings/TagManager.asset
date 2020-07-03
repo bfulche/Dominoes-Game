@@ -6,6 +6,12 @@ TagManager:
   tags:
   - cards
   - emptySlots
+  - blue
+  - green
+  - orange
+  - purple
+  - red
+  - yellow
   layers:
   - Default
   - TransparentFX
