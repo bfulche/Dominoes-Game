@@ -74,37 +74,37 @@ public class GameManager : MonoBehaviour
            if(empty1.currentCard.tag == P2empty1.currentCard.tag)
         {
             matchedCards += 1;
-            Debug.Log("slot 1 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
+            ////Debug.Log("slot 1 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
         }
 
         if (empty2.currentCard.tag == P2empty2.currentCard.tag)
         {
             matchedCards += 1;
-            Debug.Log("slot 2 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
+            //Debug.Log("slot 2 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
             
         }
 
         if (empty3.currentCard.tag == P2empty3.currentCard.tag)
         {
             matchedCards += 1;
-            Debug.Log("slot 3 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
+            //Debug.Log("slot 3 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
         }
 
         if (empty4.currentCard.tag == P2empty4.currentCard.tag)
         {
             matchedCards += 1;
-            Debug.Log("slot 4 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
+            //Debug.Log("slot 4 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
         }
 
         if (empty5.currentCard.tag == P2empty5.currentCard.tag)
         {
             matchedCards += 1;
-            Debug.Log("slot 5 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
+            //Debug.Log("slot 5 is matching for player 1 and player 2. CUrrent score is " + matchedCards);
         }
 
 
         finalScore.text = matchedCards.ToString();
-        Debug.Log("final score is " + matchedCards);
+        //Debug.Log("final score is " + matchedCards);
       
 
 
