@@ -26,7 +26,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
     [SerializeField]
     private Text timerToStartDisplay;
 
-    private bool readyToCOuntDown;
+    private bool readyToCountDown;
     private bool readyToStart;
     private bool startingGame;
 
@@ -56,17 +56,17 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
         roomSize = PhotonNetwork.CurrentRoom.MaxPlayers;
         playerCountDisplay.text = playerCount + ":" + roomSize;
 
-        if(playerCount == roomSize)
+        if (playerCount == roomSize)
         {
             readyToStart = true;
         }
         else if (playerCount >= minPlayersToStart)
         {
-            readyToCOuntDown = true;
+            readyToCountDown = true;
         }
         else
         {
-            readyToCOuntDown = false;
+            readyToCountDown = false;
             readyToStart = false;
         }
     }
@@ -77,7 +77,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
             myPhotonView.RPC("RPC_SendTimer", RpcTarget.Others, timerToStartGame);
-        
+
     }
 
     [PunRPC]
@@ -98,7 +98,7 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        WaitingForMorePLayers();
+        WaitingForMorePlayers();
     }
 
     void WaitingForMorePlayers()
@@ -108,26 +108,27 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
             ResetTimer();
         }
 
-        if(readyToStart)
+        if (readyToStart)
         {
             fullGameTimer -= Time.deltaTime;
             timerToStartGame = fullGameTimer;
         }
-        else if (readyToCOuntDown)
+        else if (readyToCountDown)
         {
             notFullGameTimer -= Time.deltaTime;
             timerToStartGame = notFullGameTimer;
         }
 
-        string timpTimer = string.Format("{0:00}", timerToStartGame);
+        string tempTimer = string.Format("{0:00}", timerToStartGame);
         timerToStartDisplay.text = tempTimer;
 
-        if(timerToStartGame <= 0f)
+        if (timerToStartGame <= 0f)
         {
             if (startingGame)
                 return;
             StartGame();
         }
+    }
 
         void ResetTimer()
         {
@@ -151,5 +152,5 @@ public class DelayStartWaitingRoomController : MonoBehaviourPunCallbacks
             PhotonNetwork.LeaveRoom();
             SceneManager.LoadScene(menuSceneIndex);
         }
-    }
+    
 }
