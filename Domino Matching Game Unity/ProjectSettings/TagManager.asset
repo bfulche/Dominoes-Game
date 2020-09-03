@@ -46,6 +46,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BG
+    uniqueID: 3292298217
+    locked: 0
+  - name: Board
+    uniqueID: 3454629295
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Dominos
+    uniqueID: 2585564995
     locked: 0

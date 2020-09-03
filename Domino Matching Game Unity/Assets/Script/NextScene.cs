@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class NextScene : MonoBehaviour
 {
 
-    public GameObject StartMenuCanvas;
+    [SerializeField]
+    private GameObject StartMenuCanvas;
     public GameObject P1Canvas;
     public GameObject BetweenCanvas;
     public GameObject P2Canvas;
@@ -62,7 +63,8 @@ public class NextScene : MonoBehaviour
 
     public void ToMenu()
     {
-        ScoreCanvas.SetActive(false);
-        StartMenuCanvas.SetActive(true);
+        ///ScoreCanvas.SetActive(false);
+        //StartMenuCanvas.SetActive(true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

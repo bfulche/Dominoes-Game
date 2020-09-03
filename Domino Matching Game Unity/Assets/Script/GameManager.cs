@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
 
 
     public int matchedCards;
+
+
+    //public Board mBoard;
     
 
     private void Start()
@@ -42,8 +45,8 @@ public class GameManager : MonoBehaviour
         P2empty4 = GameObject.Find("P2Empty04_UI").GetComponent<ItemSlot>();
         P2empty5 = GameObject.Find("P2Empty05_UI").GetComponent<ItemSlot>();
 
-        
 
+        //mBoard.Create();
 
     }
 

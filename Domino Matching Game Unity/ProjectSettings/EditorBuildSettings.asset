@@ -9,12 +9,21 @@ EditorBuildSettings:
     path: Assets/Scenes/QuickStartMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Custom Matchmaking.unity
+    guid: dc0480993888b554baf17dd66ef285ab
+  - enabled: 0
     path: Assets/Scenes/DelayStartMenu.unity
     guid: d26ffb530cef8ab4ea4ee5aac0b98121
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DelayStartWaitingRoom.unity
     guid: ed02f5e460453044181eb389a6f4eb79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MultiplayerScene.unity
     guid: 73a51a547c4f98c4d8cdc2a0a0177950
+  - enabled: 0
+    path: Assets/Scenes/GamePlayLoop.unity
+    guid: d49eb9532b653b74793b84a66e9a20fb
+  - enabled: 1
+    path: Assets/Scenes/GridTestScene.unity
+    guid: 7551069699b43d84daaca7579bc6417a
   m_configObjects: {}
