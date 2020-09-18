@@ -12,6 +12,8 @@ TagManager:
   - purple
   - red
   - yellow
+  - Cell
+  - Tile
   layers:
   - Default
   - TransparentFX

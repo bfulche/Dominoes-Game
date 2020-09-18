@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5095718399361521487}
   - component: {fileID: 3668437778721812785}
-  - component: {fileID: 6549932180495140947}
   - component: {fileID: -798836313379472190}
+  - component: {fileID: 3560837402697111590}
   m_Layer: 0
   m_Name: OneFourDomino
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3632615379943068351}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 202.20367, y: -127, z: -624.13696}
+  m_LocalPosition: {x: 202.20367, y: -127, z: 100}
   m_LocalScale: {x: 100, y: 100, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,18 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6549932180495140947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3632615379943068351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72d904502ccb3694bbc4837d8c732b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &-798836313379472190
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -122,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &3560837402697111590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3632615379943068351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -23,7 +23,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GamePlayLoop.unity
     guid: d49eb9532b653b74793b84a66e9a20fb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GridTestScene.unity
     guid: 7551069699b43d84daaca7579bc6417a
+  - enabled: 1
+    path: Assets/Scenes/RoundOne.unity
+    guid: 36f661fcc9deb314fa9028c24703a265
+  - enabled: 1
+    path: Assets/Scenes/RoundOneDebrief.unity
+    guid: 49419a795ac37e740831cc3d3b7b2d89
+  - enabled: 1
+    path: Assets/Scenes/RoundTwo.unity
+    guid: e9fa873a04f15fd4bb88f79497788111
+  - enabled: 1
+    path: Assets/Scenes/RoundTwoDebrief.unity
+    guid: bdfcad05b98551444ba30714895170c1
+  - enabled: 1
+    path: Assets/Scenes/RoundThree.unity
+    guid: 3ba7f2d4284c6094892b865201ec4a0b
+  - enabled: 1
+    path: Assets/Scenes/RoundThreeDebrief.unity
+    guid: 898cd476b99b4794a9450d5b2d65cba5
   m_configObjects: {}

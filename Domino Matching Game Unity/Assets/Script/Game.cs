@@ -12,6 +12,11 @@ public class Game : MonoBehaviour
     public GameObject domino2;
     public GameObject domino3;
 
+    //FromWord Game Drag and Drop website
+    private bool draggingItem = false;
+    private GameObject draggedObject;
+    private Vector2 touchOffset;
+
 
     void Start()
     {
@@ -21,6 +26,13 @@ public class Game : MonoBehaviour
 
     }
 
+    //DropItem function from Drag and Drop Word Game Website
+    void DropItem()
+    {
+        draggingItem = false;
+        draggedObject.transform.localScale = new Vector3(100, 100, 100);
+        draggedObject.GetComponent<DragAndDrop>().Drop();
+    }
 
     void Update()
     {

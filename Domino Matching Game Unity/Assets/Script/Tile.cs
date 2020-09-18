@@ -2,60 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragAndDrop : MonoBehaviour
+public class Tile : MonoBehaviour
 {
-
-    //from "Clicking and Dragging 2D Spriters" YouTube tutorial by Nade
-    private float startPosX;
-    private float startPosY;
-    private bool isBeingHeld = false;
-
-
-    //From Word GameDrag and Drop website code
     private Vector2 startingPosition;
     private List<Transform> touchingTiles;
     private Transform myParent;
 
+    [SerializeField]
+    private GameObject[] dominoValues;
 
 
-    private void OnMouseDown()
+
+
+
+    private void Awake()
     {
-        //0 is left mouse button, 1 is right mouse button
-        if (Input.GetMouseButtonDown(0))
-        {
-
-            Vector3 mousePose;
-            mousePose = Input.mousePosition;
-            mousePose = Camera.main.ScreenToWorldPoint(mousePose);
-
-            startPosX = mousePose.x - this.transform.localPosition.x;
-            startPosY = mousePose.y - this.transform.localPosition.y;
-
-            isBeingHeld = true;
-        }
-    }
-
-    private void OnMouseOver()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            this.transform.Rotate(0.0f, 0.0f, -90.0f, Space.World);
-            Debug.Log("Has entered object");
-
-        }
+     startingPosition = transform.position;
+     touchingTiles = new List<Transform>();
+     myParent = transform.parent;
     }
 
 
 
 
-    private void OnMouseUp()
+
+
+
+
+    public void PickUp()
     {
-        isBeingHeld = false;
+        transform.localScale = new Vector3(1.1f, 1.1f, 1);
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
+
+
+
+
 
 
     public void Drop()
     {
+
+        transform.localScale = new Vector3(1, 1, 1);
+        gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
+
         Vector2 newPosition;
         if (touchingTiles.Count == 0)
         {
@@ -82,7 +72,6 @@ public class DragAndDrop : MonoBehaviour
                 }
             }
             newPosition = currentCell.position;
-
         }
         if (currentCell.childCount != 0)
         {
@@ -98,24 +87,40 @@ public class DragAndDrop : MonoBehaviour
     }
 
 
+
+
+
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Cell") return;
+        if (other.tag!="Cell") return;
         if (!touchingTiles.Contains(other.transform))
         {
+            Debug.Log("Has entered cell");
             touchingTiles.Add(other.transform);
         }
     }
+
+
+
+
+
+
 
 
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.tag != "Cell") return;
-        if (!touchingTiles.Contains(other.transform))
+        if (touchingTiles.Contains(other.transform))
         {
-            touchingTiles.Add(other.transform);
+            touchingTiles.Remove(other.transform);
         }
     }
+
+
+
+
+
 
 
     IEnumerator SlotIntoPlace(Vector2 startingPos, Vector2 endingPos)
@@ -134,24 +139,15 @@ public class DragAndDrop : MonoBehaviour
 
 
 
-    void Update()
+
+
+
+    private void OnMouseOver()
     {
-        if(isBeingHeld == true)
+        if (Input.GetMouseButtonDown(1))
         {
-            Vector3 mousePose;
-            mousePose = Input.mousePosition;
-            mousePose = Camera.main.ScreenToWorldPoint(mousePose);
+            this.transform.Rotate(0.0f, 0.0f, -90.0f, Space.World);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePose.x - startPosX, mousePose.y - startPosY, 0);
-
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
-            transform.localScale = new Vector3(110, 110, 110);
-        }
-
-        if(isBeingHeld == false)
-        {
-            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 0;
-            transform.localScale = new Vector3(100, 100, 100);
         }
     }
 }
