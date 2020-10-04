@@ -18,6 +18,12 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     private GameObject startButton;
 
     [SerializeField]
+    private GameObject startButton2;
+
+    [SerializeField]
+    private GameObject startButton3;
+
+    [SerializeField]
     private Transform playersContainer;
     [SerializeField]
     private GameObject playerListingPrefab;
@@ -51,10 +57,14 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
+            startButton2.SetActive(true);
+            startButton3.SetActive(true);
         }
         else
         {
             startButton.SetActive(false);
+            startButton2.SetActive(false);
+            startButton3.SetActive(false);
         }
 
         ClearPLayerListings();
@@ -73,6 +83,8 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             startButton.SetActive(true);
+            startButton2.SetActive(true);
+            startButton3.SetActive(true);
         }
     }
 
@@ -81,7 +93,25 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
+            PhotonNetwork.LoadLevel(1);
+        }
+    }
+
+    public void StartGameLevelTwo()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.LoadLevel(7);
+        }
+    }
+
+    public void StartGameLevelThree()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.LoadLevel(13);
         }
     }
 
