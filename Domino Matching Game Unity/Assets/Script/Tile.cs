@@ -8,10 +8,6 @@ public class Tile : MonoBehaviour
     private List<Transform> touchingTiles;
     private Transform myParent;
 
-    [SerializeField]
-    private GameObject[] dominoValues;
-
-
 
 
 

@@ -79,6 +79,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
             if (tempIndex != -1)
             {
                 roomListings.RemoveAt(tempIndex);
+                Destroy(roomsContainer.GetChild(tempIndex).gameObject);
             }
             if (room.PlayerCount > 0)
             {
@@ -89,7 +90,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
 
-    static System.Predicate<RoomInfo> ByName(string name)
+    /*static*/ System.Predicate<RoomInfo> ByName(string name)
     {
         return delegate (RoomInfo room)
         {
@@ -119,7 +120,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize};
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 

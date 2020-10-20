@@ -3,8 +3,10 @@ using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
+using System.IO;
 
-public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
+public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     [SerializeField]
     private int multiPlayerSceneIndex;
@@ -30,6 +32,10 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     [SerializeField]
     private Text roomNameDisplay;
+
+
+
+
 
     void ClearPLayerListings()
     {
@@ -129,4 +135,5 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveLobby();
         StartCoroutine(rejoinlobby());
     }
+
 }

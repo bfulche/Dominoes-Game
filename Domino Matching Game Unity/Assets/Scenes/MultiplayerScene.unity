@@ -205,7 +205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &200931117
 PrefabInstance:
@@ -278,6 +278,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PhotonPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7676400957173023045, guid: 32ed31992e6f0e84883319cf70d62eb7,
+        type: 3}
+      propertyPath: viewIdField
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32ed31992e6f0e84883319cf70d62eb7, type: 3}

@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     [SerializeField]
     private GameObject[] BoardCellsArray;
 
-
+    
 
 
 
@@ -122,8 +122,11 @@ public class InputManager : MonoBehaviour
         {
             foreach(GameObject BoardCell in BoardCellsArray)
             {
-                print(BoardCell);  //print each cell's name
-
+                if(BoardCell.transform.childCount > 0)   //check is BoardCell has a child
+                {
+                    print(this + " has child object " + this.transform.GetChild(0).gameObject);  //print each cell's name
+                }
+                
             }
         }
     }
