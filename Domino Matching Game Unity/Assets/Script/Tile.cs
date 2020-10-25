@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script determines the movement for 'tile' tagged objects, meaning dominoes. It helps with dropping the dominoes into the squares/'cells'
+
 public class Tile : MonoBehaviour
 {
     private Vector2 startingPosition;

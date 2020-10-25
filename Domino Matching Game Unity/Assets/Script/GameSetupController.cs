@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+//This script is placed in each game scene and allows for player instantiation at each scene. 
+//It also prints player's domino rotation and parent information, I'm hoping to use this info when comparing the player's dominoes to the host's dominoes in order to create a score.
+
 public class GameSetupController : MonoBehaviour
 {
     

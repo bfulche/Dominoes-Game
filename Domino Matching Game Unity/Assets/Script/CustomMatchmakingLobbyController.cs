@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script is used in the first scene and allows for creating a player name, creating rooms, joining rooms, and designating a 'host' player per room
+
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
 

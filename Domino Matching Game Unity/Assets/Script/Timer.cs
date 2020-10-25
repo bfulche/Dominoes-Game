@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
+//This is the timer for the 2 minutes for each round. It's also used in the Debrief scenes although it doesn't need to be
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 2;

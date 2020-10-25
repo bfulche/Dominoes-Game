@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script helps with the dominoes snapping into their suare slots
+
 public class Game : MonoBehaviour
 {
     public GameObject[,] positions = new GameObject[3, 2];

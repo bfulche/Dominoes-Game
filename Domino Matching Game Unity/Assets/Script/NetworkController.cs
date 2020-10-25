@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script gets the Photon Networking up and running
+
 public class NetworkController : MonoBehaviourPunCallbacks
 {
 
