@@ -94,7 +94,7 @@ public class Tile : MonoBehaviour
         if (other.tag!="Cell") return;
         if (!touchingTiles.Contains(other.transform))
         {
-            Debug.Log("Has entered cell");
+            //Debug.Log("Has entered cell");
             touchingTiles.Add(other.transform);
         }
     }

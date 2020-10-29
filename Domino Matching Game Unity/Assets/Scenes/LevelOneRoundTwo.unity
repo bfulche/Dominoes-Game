@@ -216,14 +216,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 99626662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a522a85193358498766b96e688ab2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c2b284e9ee409f4a8ee932c37c51ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoardCellsArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  BoardCellsArray: []
 --- !u!4 &99626664
 Transform:
   m_ObjectHideFlags: 0
@@ -250,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26579d338c48ae42a834eb63dac626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 120
+  timeRemaining: 10
   timerIsRunning: 0
   timeText: {fileID: 1432633711}
 --- !u!1 &328860859
@@ -551,7 +547,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dominoValues: []
 --- !u!61 &682373569
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1241,7 +1236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dominoValues: []
 --- !u!50 &1167044200
 Rigidbody2D:
   serializedVersion: 4
@@ -1595,7 +1589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dominoValues: []
 --- !u!61 &1473868419
 BoxCollider2D:
   m_ObjectHideFlags: 0

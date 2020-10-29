@@ -2,33 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script helps with spawning dominoes. It also deals with picking up dominoes and moving them around with a mouse click
-
-public class Game : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
-    public GameObject[,] positions = new GameObject[3, 2];
-    private GameObject[] playerDominos = new GameObject[2];
-
-
-    public GameObject domino1;
-    public GameObject domino2;
-    public GameObject domino3;
-
-    //FromWord Game Drag and Drop website
     private bool draggingItem = false;
     private GameObject draggedObject;
     private Vector2 touchOffset;
 
+    [SerializeField]
+    private GameObject[] BoardCellsArray;
 
-    void Start()
-    {
-        Instantiate(domino1, new Vector3(-200, -160, -1), Quaternion.identity);
-        Instantiate(domino2, new Vector3(0, -160, -1), Quaternion.identity);
-        Instantiate(domino3, new Vector3(200, -160, -1), Quaternion.identity);
+    
 
-    }
 
-    void Update()
+
+    private void Update()
     {
         if (HasInput)
         {
@@ -39,7 +26,14 @@ public class Game : MonoBehaviour
             if (draggingItem)
                 DropItem();
         }
+
+        PrintArrayInfo();
     }
+
+
+
+
+
 
     Vector2 CurrentTouchPosition
     {
@@ -50,9 +44,17 @@ public class Game : MonoBehaviour
     }
 
 
+
+
+
+
+
+
+
     private void DragOrPickUp()
     {
         var inputPosition = CurrentTouchPosition;
+
         if (draggingItem)
         {
             draggedObject.transform.position = inputPosition + touchOffset;
@@ -60,7 +62,7 @@ public class Game : MonoBehaviour
         else
         {
             RaycastHit2D[] touches = Physics2D.RaycastAll(inputPosition, inputPosition, 0.5f);
-            if(touches.Length > 0)
+            if (touches.Length > 0)
             {
                 var hit = touches[0];
                 if (hit.transform != null && hit.transform.tag == "Tile")
@@ -75,6 +77,12 @@ public class Game : MonoBehaviour
     }
 
 
+
+
+
+
+
+
     private bool HasInput
     {
         get
@@ -84,11 +92,44 @@ public class Game : MonoBehaviour
     }
 
 
-    //DropItem function from Drag and Drop Word Game Website
+
+
+
+
+
+
     void DropItem()
     {
         draggingItem = false;
-        draggedObject.transform.localScale = new Vector3(1, 1, 1);
+        draggedObject.transform.localScale = new Vector3(100, 100, 1);
         draggedObject.GetComponent<Tile>().Drop();
     }
+
+
+
+
+
+
+
+
+
+
+
+    //Print list of game objects in cells and their z rotation value with button press
+    void PrintArrayInfo()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            foreach(GameObject BoardCell in BoardCellsArray)
+            {
+                if(BoardCell.transform.childCount > 0)   //check is BoardCell has a child
+                {
+                    print(this + " has child object " + this.transform.GetChild(0).gameObject);  //print each cell's name
+                }
+                
+            }
+        }
+    }
+
+
 }
