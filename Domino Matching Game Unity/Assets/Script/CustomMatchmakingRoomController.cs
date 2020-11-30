@@ -137,5 +137,4 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoo
         PhotonNetwork.LeaveLobby();
         StartCoroutine(rejoinlobby());
     }
-
 }

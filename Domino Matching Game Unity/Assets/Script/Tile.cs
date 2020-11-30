@@ -144,7 +144,7 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.transform.Rotate(0.0f, 0.0f, -90.0f, Space.World);
+            this.transform.Rotate(0.0f, 0.0f, -45.0f, Space.World);
 
         }
     }

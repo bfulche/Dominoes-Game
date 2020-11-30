@@ -67,7 +67,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -78,7 +77,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         timeToStart = startingTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (MultiplayerSetting.multiplayerSetting.delayStart)

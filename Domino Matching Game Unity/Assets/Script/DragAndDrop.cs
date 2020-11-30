@@ -39,7 +39,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.transform.Rotate(0.0f, 0.0f, -90.0f, Space.World);
+            this.transform.Rotate(0.0f, 0.0f, -45, Space.World);
             Debug.Log("Has entered object");
 
         }
