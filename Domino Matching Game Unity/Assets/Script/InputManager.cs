@@ -1,21 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
+using Photon.Realtime;
+using System.Threading;
+using UnityEngine.SceneManagement;
 
-public class InputManager : MonoBehaviour
+
+//I'm using this script to manage mouse buttons on the dominoes.
+//It's also being used to print the player list for the Photon Room and print a player's domino information.
+//It also is attached to the Manager in each scene. 
+//It's also used to call the 'Next Scene' function for buttons.
+public class InputManager : MonoBehaviourPunCallbacks
 {
     private bool draggingItem = false;
     private GameObject draggedObject;
     private Vector2 touchOffset;
 
-    [SerializeField]
-    private GameObject[] BoardCellsArray;
+    private int roundScore;
 
+    GameObject[] dominoArray;
+
+
+    //Trying to create an array of dominoes for each player and a round score.
+    void Awake()
+    {
+        roundScore = 0;
+        dominoArray = GameObject.FindGameObjectsWithTag("Tile");
+    }
+    
     
 
-
-
-    private void Update()
+    void Update()
     {
         if (HasInput)
         {
@@ -27,7 +43,17 @@ public class InputManager : MonoBehaviour
                 DropItem();
         }
 
-        PrintArrayInfo();
+        PrintDominoArrayInfo();
+        PrintPlayerList();
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            foreach (GameObject domino in dominoArray)
+            {
+                print(domino);
+            }
+
+        }
     }
 
 
@@ -109,27 +135,47 @@ public class InputManager : MonoBehaviour
 
 
 
-
-
-
-
-
-
-    //Print list of game objects in cells and their z rotation value with button press
-    void PrintArrayInfo()
+    //Prints the names of each player in the current Photon Room
+    void PrintPlayerList()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            foreach(GameObject BoardCell in BoardCellsArray)
+            foreach(Player player in PhotonNetwork.PlayerList)
             {
-                if(BoardCell.transform.childCount > 0)   //check is BoardCell has a child
-                {
-                    print(this + " has child object " + this.transform.GetChild(0).gameObject);  //print each cell's name
-                }
-                
+                print("The players in this room are: " + player.NickName);
             }
+            
         }
     }
 
 
+    //If a domino has a parent, this prints the domino's name, z-rotation value, and parent name
+    void PrintDominoArrayInfo()
+    {
+        GameObject[] playerDominoes = GameObject.FindGameObjectsWithTag("Tile");
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            foreach (GameObject playerDomino in playerDominoes)
+            {
+                if (playerDomino.transform.parent != null)
+                {
+                    print("The " + playerDomino.name + " is in " + playerDomino.transform.parent.name + ", with a rotation of " + playerDomino.transform.rotation.eulerAngles.z + " degrees.");
+                }  
+            }
+        }
+    }
+
+    //This is to be called on buttons that take the player to the next scene
+    public void NextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    //This is to be called on buttons that take the player to the first scene
+    public void FirstScene()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene(0);
+    }
 }
