@@ -11,6 +11,10 @@ public class Timer : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
+    // alerts subscribed functions when timer is up
+    public delegate void TimerUp();
+    public TimerUp timerDone;
+
     private void Start()
     {
         timerIsRunning = true;
@@ -30,6 +34,13 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
                 Debug.Log("Time's Up!");
+
+                timerDone?.Invoke(); // let subscribed functions know times up.
+
+                // need some way of confirming data has been updated, and players finished uploading data to server before switching scenes
+                // I think score calculating should be at the start of the next scene? Is there a benefit to calculating scores before 
+                // moving to next scene? Personal preference?
+
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
