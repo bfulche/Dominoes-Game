@@ -8,14 +8,16 @@ public class Tile : MonoBehaviour
     private List<Transform> touchingTiles;
     private Transform myParent;
 
+    [SerializeField] private int id;
+    public int ID => id;    // read only to get tile ID.
 
 
 
     private void Awake()
     {
-     startingPosition = transform.position;
-     touchingTiles = new List<Transform>();
-     myParent = transform.parent;
+        startingPosition = transform.position;
+        touchingTiles = new List<Transform>();
+        myParent = transform.parent;
     }
 
 
@@ -89,7 +91,7 @@ public class Tile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag!="Cell") return;
+        if (other.tag != "Cell") return;
         if (!touchingTiles.Contains(other.transform))
         {
             Debug.Log("Has entered cell");
