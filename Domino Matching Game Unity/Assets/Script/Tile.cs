@@ -10,8 +10,7 @@ public class Tile : MonoBehaviour
     private List<Transform> touchingTiles;
     private Transform myParent;
 
-
-
+    public int ID { get; internal set; }
 
     private void Awake()
     {
