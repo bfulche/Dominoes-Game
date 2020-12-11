@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 //This is the timer for the 2 minutes for each round. It's also used in the Debrief scenes although it doesn't need to be
 public class Timer : MonoBehaviour
@@ -11,13 +12,16 @@ public class Timer : MonoBehaviour
     public bool timerIsRunning = false;
     public Text timeText;
 
-    // alerts subscribed functions when tmier is up
+    // alerts subscribed functions when timer is up
     public delegate void TimerUp();
     public TimerUp timerDone;
+
+    [SerializeField] GameObject toScoreboardButton;
 
     private void Start()
     {
         timerIsRunning = true;
+        toScoreboardButton.SetActive(false);
     }
 
     private void Update()
@@ -35,13 +39,20 @@ public class Timer : MonoBehaviour
                 timerIsRunning = false;
                 Debug.Log("Time's Up!");
 
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
                 timerDone?.Invoke();  //let subscribed functions know time is up.
+
+                // only allows host to host (master client) to view/press button to go to scoreboard
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    toScoreboardButton.SetActive(true);
+                }
 
                 // need some way of confirming data has been updated, and players finished uploading data to server before switching scenes
                 // I think score calculating should be at the start of the next scene? Is there a benefit to calculating scores before
                 // moving to next scene? Personal preference?
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
         }
     }

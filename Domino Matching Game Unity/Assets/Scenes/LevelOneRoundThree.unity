@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2b284e9ee409f4a8ee932c37c51ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreboardPanel: {fileID: 0}
 --- !u!4 &99626664
 Transform:
   m_ObjectHideFlags: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
   timeRemaining: 2
   timerIsRunning: 0
   timeText: {fileID: 1432633711}
+  toScoreboardButton: {fileID: 0}
 --- !u!1 &172394687
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 398, y: -348}
+  m_AnchoredPosition: {x: 378, y: -333}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172394689
@@ -934,7 +936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -336, y: 351}
+  m_AnchoredPosition: {x: -321, y: 346}
   m_SizeDelta: {x: 188.4881, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742775566
@@ -1013,7 +1015,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 342, y: 351}
+  m_AnchoredPosition: {x: 303, y: 341}
   m_SizeDelta: {x: 188.4881, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791036706
@@ -1515,7 +1517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 398, y: 303}
+  m_AnchoredPosition: {x: 329, y: 293}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432633711

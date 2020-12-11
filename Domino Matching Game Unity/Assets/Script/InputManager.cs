@@ -17,16 +17,17 @@ public class InputManager : MonoBehaviourPunCallbacks
     private GameObject draggedObject;
     private Vector2 touchOffset;
 
-    private int roundScore;
-
     GameObject[] dominoArray;
+
+    [SerializeField] GameObject ScoreboardPanel;
+
 
 
     //Trying to create an array of dominoes for each player and a round score.
     void Awake()
     {
-        roundScore = 0;
         dominoArray = GameObject.FindGameObjectsWithTag("Tile");
+        //ScoreboardPanel.SetActive(false);
     }
     
     
@@ -45,6 +46,9 @@ public class InputManager : MonoBehaviourPunCallbacks
 
         PrintDominoArrayInfo();
         PrintPlayerList();
+
+
+
 
         if (Input.GetKeyDown(KeyCode.F))
         {
@@ -133,8 +137,6 @@ public class InputManager : MonoBehaviourPunCallbacks
 
 
 
-
-
     //Prints the names of each player in the current Photon Room
     void PrintPlayerList()
     {
@@ -147,6 +149,9 @@ public class InputManager : MonoBehaviourPunCallbacks
             
         }
     }
+
+
+
 
 
     //If a domino has a parent, this prints the domino's name, z-rotation value, and parent name
@@ -166,11 +171,36 @@ public class InputManager : MonoBehaviourPunCallbacks
         }
     }
 
+
+
+
+
+
+
+
+
+
+    // This calls the scoreboard for each round
+    // Looks for game object "ScoreboardPanel"
+    public void toScoreboard()
+    {
+        ScoreboardPanel.SetActive(true);
+    }
+
+
+
     //This is to be called on buttons that take the player to the next scene
     public void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+
+
+
+
+
+
 
     //This is to be called on buttons that take the player to the first scene
     public void FirstScene()

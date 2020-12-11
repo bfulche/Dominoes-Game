@@ -23,6 +23,8 @@ public class ScoreBoardMatrix : MonoBehaviour
     private void Start()
     {
         UpdateScoreMatrix();
+
+
     }
 
     void UpdateScoreMatrix()
@@ -46,10 +48,11 @@ public class ScoreBoardMatrix : MonoBehaviour
 
         roomProperties[PhotonProperty.RoundScores] = roundScores;
 
-        PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties);
+        PhotonNetwork.CurrentRoom.SetCustomProperties(roomProperties); // sends 
 
 
-        // not clean. But basically leaving text field blank if value round value isn't used yet ( <= -1)
+        // not clean. But basically leaving text field blank if round value isn't used yet ( <= -1)
+
         if (roundScores[0] > -1)
             round1Score.text = roundScores[0].ToString();
         if (roundScores[1] > -1)

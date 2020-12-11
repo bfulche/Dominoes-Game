@@ -3,13 +3,15 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Realtime;
 
 public class PlayerBoardState : MonoBehaviour
 {
     Tile[] tiles;
 
-    ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
-    // Start is called before the first frame update
+    ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();    
+
+
     void Start()
     {
         //acquire personal tiles
@@ -19,8 +21,34 @@ public class PlayerBoardState : MonoBehaviour
 
         if (timer != null)
             timer.timerDone += UpdateBoardState;
-
     }
+
+
+    // retrieving domino information from Tile[] array
+    // need to compare local player to host
+    private void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            Debug.Log("The tiles array has " + tiles.Length + " items.");
+            Debug.Log(PhotonNetwork.NickName + " has the " + tiles[0] + " in the first array slot. It has a parent of " + tiles[0].transform.parent.name + " and a rotation of " + tiles[0].transform.rotation.eulerAngles.z + " degrees.");
+            Debug.Log(PhotonNetwork.NickName + " has the " + tiles[1] + " in the first array slot. It has a parent of " + tiles[1].transform.parent.name + " and a rotation of " + tiles[1].transform.rotation.eulerAngles.z + " degrees.");
+            Debug.Log(PhotonNetwork.NickName + " has the " + tiles[2] + " in the first array slot. It has a parent of " + tiles[2].transform.parent.name + " and a rotation of " + tiles[2].transform.rotation.eulerAngles.z + " degrees.");
+
+        }
+
+
+        // Trying to compare 
+        /*if (Input.GetKeyDown("Y"))
+        {
+            if(PhotonNetwork.CurrentRoom.GetPlayer(2).tiles[0].transform.parent.name == PhotonNetwork.CurrentRoom.GetPlayer(1).tiles[0].transform.parent.name)
+            {
+                Debug.Log("We have a match!");
+            }
+        }*/
+    }
+
+
 
     private void CalculateScore()
     {

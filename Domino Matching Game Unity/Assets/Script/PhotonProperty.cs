@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Class for holding the string info for all used photon room and player property strings. 
+/// Class for holding the string info for all used photon room and 
+/// player property strings. 
 /// </summary>
 public static class PhotonProperty
 {

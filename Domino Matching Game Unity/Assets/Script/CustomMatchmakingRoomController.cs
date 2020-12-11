@@ -29,6 +29,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoo
 
     [SerializeField]
     private Transform playersContainer;
+
     [SerializeField]
     private GameObject playerListingPrefab;
 
