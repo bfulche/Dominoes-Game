@@ -9,8 +9,8 @@ public class Tile : MonoBehaviour
     private Vector2 startingPosition;
     private List<Transform> touchingTiles;
     private Transform myParent;
-
-    public int ID { get; internal set; }
+    [SerializeField] int id;
+    public int ID => id;
 
     private void Awake()
     {

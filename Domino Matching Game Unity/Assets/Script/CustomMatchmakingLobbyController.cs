@@ -122,7 +122,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize};
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize, BroadcastPropsChangeToAll = true};
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 

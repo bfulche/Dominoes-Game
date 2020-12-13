@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 
 //This is the timer for the 2 minutes for each round. It's also used in the Debrief scenes although it doesn't need to be
-public class Timer : MonoBehaviour
+public class Timer : MonoBehaviourPun
 {
-    public float timeRemaining = 2;
+    [SerializeField] float startTime = 5f;
+    private float timeRemaining = 2f;
     public bool timerIsRunning = false;
     public Text timeText;
 
@@ -20,8 +21,15 @@ public class Timer : MonoBehaviour
 
     private void Start()
     {
-        timerIsRunning = true;
+       // timerIsRunning = true;
         toScoreboardButton.SetActive(false);
+    }
+
+    [PunRPC]
+    public void StartTimer()
+    {
+        timeRemaining = startTime;
+        timerIsRunning = true;
     }
 
     private void Update()
