@@ -2,22 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script determines the movement for 'tile' tagged objects, meaning dominoes. It helps with dropping the dominoes into the squares/'cells'
+
 public class Tile : MonoBehaviour
 {
     private Vector2 startingPosition;
     private List<Transform> touchingTiles;
     private Transform myParent;
-
-    [SerializeField] private int id;
-    public int ID => id;    // read only to get tile ID.
-
-
+    [SerializeField] int id;
+    public int ID => id;
 
     private void Awake()
     {
-        startingPosition = transform.position;
-        touchingTiles = new List<Transform>();
-        myParent = transform.parent;
+     startingPosition = transform.position;
+     touchingTiles = new List<Transform>();
+     myParent = transform.parent;
     }
 
 
@@ -91,10 +90,10 @@ public class Tile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag != "Cell") return;
+        if (other.tag!="Cell") return;
         if (!touchingTiles.Contains(other.transform))
         {
-            Debug.Log("Has entered cell");
+            //Debug.Log("Has entered cell");
             touchingTiles.Add(other.transform);
         }
     }
@@ -144,7 +143,7 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.transform.Rotate(0.0f, 0.0f, -90.0f, Space.World);
+            this.transform.Rotate(0.0f, 0.0f, -45.0f, Space.World);
 
         }
     }

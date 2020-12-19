@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//I'm not entirely sure about this script to be honest. I don't think it is being used in the current version, but I'm not positive.
+
 public class MultiplayerSetting : MonoBehaviour
 {
 

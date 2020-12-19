@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using UnityEngine;
 
+//This script works in the opening scene and allows players to join a created room
+
 public class RoomButton : MonoBehaviour
 {
     [SerializeField]

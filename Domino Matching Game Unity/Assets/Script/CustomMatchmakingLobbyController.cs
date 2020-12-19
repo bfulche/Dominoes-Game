@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This script is used in the first scene and allows for creating a player name, creating rooms, joining rooms, and designating a 'host' player per room
+
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
 
@@ -120,7 +122,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize};
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize, BroadcastPropsChangeToAll = true};
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 

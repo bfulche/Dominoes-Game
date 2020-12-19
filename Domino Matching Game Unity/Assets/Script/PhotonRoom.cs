@@ -6,6 +6,8 @@ using Photon.Realtime;
 using System.IO;
 using UnityEngine.SceneManagement;
 
+//This script helps with Room creation, player information, and joining/leaving rooms. This is utilized primarily in the first scene
+
 public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
 
@@ -65,7 +67,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         PV = GetComponent<PhotonView>();
@@ -76,7 +77,6 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         timeToStart = startingTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (MultiplayerSetting.multiplayerSetting.delayStart)

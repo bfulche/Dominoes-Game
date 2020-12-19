@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2362712651351364672}
   - component: {fileID: 7676400957173023045}
-  - component: {fileID: 3859634718244917511}
+  - component: {fileID: -9110502289705126391}
   m_Layer: 0
   m_Name: PhotonPlayer
   m_TagString: Untagged
@@ -55,7 +55,7 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &3859634718244917511
+--- !u!114 &-9110502289705126391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

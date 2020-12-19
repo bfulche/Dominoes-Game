@@ -6,6 +6,8 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 using System.IO;
 
+//This script handles the navigation of the first scene. It also helps with listing all players and game rooms
+
 public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     [SerializeField]
@@ -27,6 +29,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoo
 
     [SerializeField]
     private Transform playersContainer;
+
     [SerializeField]
     private GameObject playerListingPrefab;
 
@@ -135,5 +138,4 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoo
         PhotonNetwork.LeaveLobby();
         StartCoroutine(rejoinlobby());
     }
-
 }
