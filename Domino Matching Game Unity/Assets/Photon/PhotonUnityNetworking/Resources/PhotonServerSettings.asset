@@ -41,6 +41,9 @@ MonoBehaviour:
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
   - StartTimer
+  - HideScorePanel
+  - LoadNextLevel
+  - ShowScorePanel
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

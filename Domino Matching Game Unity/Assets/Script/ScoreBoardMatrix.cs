@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ScoreBoardMatrix : MonoBehaviour
+public class ScoreBoardMatrix : MonoBehaviourPun
 {
     //   // round scores - only ever 3 total rounds so this is simple enough
     //   [SerializeField] Text round1Score;
@@ -18,39 +18,61 @@ public class ScoreBoardMatrix : MonoBehaviour
     //   [SerializeField] Text totalScore2;
     //   [SerializeField] Text totalScore3;
 
-    int currentRound = 1;
+  //  int currentRound = 1;
     int totalGameScoreTally = 0;
 
     [SerializeField] GameObject scorePanel;
 
     [SerializeField] Text[] roundScores;
     [SerializeField] Text[] totalScores;
+    [SerializeField] Button buttonToNextRound;
+    Text buttonToNextRoundText;
 
+    public Text NextRoundButton => buttonToNextRoundText;
     // player's personal scores could go here. no UI element for it yet
 
     private void Start()
     {
+        buttonToNextRoundText = buttonToNextRound.GetComponentInChildren<Text>();
         HideScorePanel();
     }
 
+    [PunRPC]
     public void ShowScorePanel()
     {
         scorePanel.SetActive(true);
+
+        // only host should see button to next round
+        if (PhotonNetwork.IsMasterClient)
+            buttonToNextRound.gameObject.SetActive(true);
+        else
+            buttonToNextRound.gameObject.SetActive(false);
+        
     }
 
+    [PunRPC]
     public void HideScorePanel()
     {
         scorePanel.SetActive(false);
     }
 
-    public void UpdateLocalScoreBoard(int roundScore)
+    public void NewLevel()
     {
-        roundScores[currentRound - 1].text = roundScore.ToString();
+        totalGameScoreTally = 0;
+    }
+
+    public void UpdateLocalScoreBoard(int roundScore, int currentRound)
+    {
+        // 12/20/2020 bug: Client score board sets round2/3 scores as 0. But host is receiving correct score...
+        // need to identify what's causing client-display issue.
+        Debug.Log("Received Round Score: " + roundScore +". Received Current Round Integer: " + currentRound);
+
+        roundScores[currentRound].text = roundScore.ToString();
 
         totalGameScoreTally += roundScore;
-        totalScores[currentRound - 1].text = totalGameScoreTally.ToString();
+        totalScores[currentRound].text = totalGameScoreTally.ToString();
 
-        currentRound++;
+       // currentRound++;
     }
     /*
         void UpdateScoreMatrix()

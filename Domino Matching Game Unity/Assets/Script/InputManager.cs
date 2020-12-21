@@ -60,11 +60,6 @@ public class InputManager : MonoBehaviourPunCallbacks
         }
     }
 
-
-
-
-
-
     Vector2 CurrentTouchPosition
     {
         get
@@ -72,14 +67,6 @@ public class InputManager : MonoBehaviourPunCallbacks
             return Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
     }
-
-
-
-
-
-
-
-
 
     private void DragOrPickUp()
     {

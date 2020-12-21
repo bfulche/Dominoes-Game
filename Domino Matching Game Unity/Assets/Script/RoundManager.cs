@@ -6,18 +6,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Throwing a quick setup together to test comparison timing and scoring.
-/// Attached to Manager object in hierarchy
-/// </summary>
+
 [RequireComponent(typeof(Timer))]
 public class RoundManager : MonoBehaviourPunCallbacks
 {
     Timer timer;
     [SerializeField] Button startRoundButton;
     int currentRoundScore = 0;
+    int currentRound;
+
+    private static readonly int totalRounds = 3;    // will always have 3 rounds to a level.
+
     [SerializeField] ScoreBoardMatrix scoreBoard;
     Dictionary<Player, int> playerScores;   // attempt to prevent duplicate scores being sent
+    InputManager inputManager;
+    bool nextLevel = false;
+
+    public ScoreBoardMatrix ScoreBoard => scoreBoard;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +30,14 @@ public class RoundManager : MonoBehaviourPunCallbacks
         playerScores = new Dictionary<Player, int>();
         timer = GetComponent<Timer>();
         timer.timerDone += DisplayScore;
+        inputManager = GetComponent<InputManager>();
         if (!PhotonNetwork.IsMasterClient)
         {
             // only show button for host
             startRoundButton.gameObject.SetActive(false);
         }
+
+        currentRound = 0;   // start at the first round
     }
 
     /// <summary>
@@ -39,11 +47,11 @@ public class RoundManager : MonoBehaviourPunCallbacks
     /// <param name="changedProps"></param>
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
+        Debug.Log("Current # of keys in playerScores: " + playerScores.Count);
+
         base.OnPlayerPropertiesUpdate(targetPlayer, changedProps);
 
-        // We're the host, and we received our own property update. Don't count our score
-
-        if (targetPlayer == PhotonNetwork.MasterClient) // don't count host score
+        if (targetPlayer == PhotonNetwork.MasterClient) // don't count host's score
             return;
 
         if (!playerScores.ContainsKey(targetPlayer))
@@ -60,8 +68,11 @@ public class RoundManager : MonoBehaviourPunCallbacks
     {
         // only host can click this.
 
-        // prevent host from being able to move tiles.
-        GetComponent<InputManager>().enabled = false;
+        // prevent host from being able to move tiles. after stating "ready"
+        inputManager.enabled = false;
+
+        // hide begin round button
+        startRoundButton.gameObject.SetActive(false);
 
         //  Send host's current board state.
         SendBoardState();
@@ -69,10 +80,15 @@ public class RoundManager : MonoBehaviourPunCallbacks
         // Send message to other clients that round is starting.
         timer.photonView.RPC("StartTimer", RpcTarget.All);
         //start round timer
-        
+
         timer.StartTimer();
 
-        playerScores.Clear();   // ready for new round
+
+        playerScores.Clear();   // should remove all keys in dictionary?
+                                                        // not sure if this is part of the client-side bug
+                                                        // for round 2/3 scoring showing up as 0
+
+      //  playerScores.Clear();   // ready for new round
     }
 
     private void DisplayScore()
@@ -82,10 +98,51 @@ public class RoundManager : MonoBehaviourPunCallbacks
 
     IEnumerator DisplayScoreAfterSeconds()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
 
-        scoreBoard.UpdateLocalScoreBoard(currentRoundScore);
-        scoreBoard.ShowScorePanel();
+        scoreBoard.UpdateLocalScoreBoard(currentRoundScore, currentRound);
+        scoreBoard.photonView.RPC("ShowScorePanel", RpcTarget.All);
+        //scoreBoard.ShowScorePanel();
+
+        PrepareForNextRound();
+    }
+
+    private void PrepareForNextRound()
+    {
+        currentRound++;
+        currentRoundScore = 0;
+        if (currentRound < totalRounds)
+        {
+            // clean up board state to redo round.
+            Tile.ResetTiles();
+            // re-enable host's start round button
+            if (PhotonNetwork.IsMasterClient)
+                startRoundButton.gameObject.SetActive(true);
+
+            inputManager.enabled = true;
+            scoreBoard.NextRoundButton.text = "To Round " + (currentRound + 1).ToString();
+        }
+        else
+        {
+            // final round completed. Let level manager know to start next level.
+            nextLevel = true;
+            inputManager.enabled = true;
+            scoreBoard.NextRoundButton.text = "Next Level";
+            currentRound = 0;
+        }
+    }
+
+
+    public void NextRound()
+    {
+        if (nextLevel)
+        {
+            nextLevel = false;
+            LevelManager.Instance.photonView.RPC("LoadNextLevel", RpcTarget.All);
+            //  LevelManager.Instance.LoadNextLevel();
+        }
+
+        scoreBoard.photonView.RPC("HideScorePanel", RpcTarget.All);
     }
 
     private void SendBoardState()

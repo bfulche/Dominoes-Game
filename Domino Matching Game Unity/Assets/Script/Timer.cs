@@ -32,6 +32,11 @@ public class Timer : MonoBehaviourPun
         timerIsRunning = true;
     }
 
+    public void SetRoundTimer(float duration)
+    {
+        startTime = duration;
+    }
+
     private void Update()
     {
         if (timerIsRunning)
@@ -52,10 +57,10 @@ public class Timer : MonoBehaviourPun
                 timerDone?.Invoke();  //let subscribed functions know time is up.
 
                 // only allows host to host (master client) to view/press button to go to scoreboard
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    toScoreboardButton.SetActive(true);
-                }
+             //   if (PhotonNetwork.IsMasterClient)
+             //   {
+             //       toScoreboardButton.SetActive(true);
+             //   }
 
                 // need some way of confirming data has been updated, and players finished uploading data to server before switching scenes
                 // I think score calculating should be at the start of the next scene? Is there a benefit to calculating scores before

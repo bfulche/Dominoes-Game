@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5792c2cb4338f6443923b47c44fac1cd, type: 3}
+  m_Name: Level 2
+  m_EditorClassIdentifier: 
+  tilePrefabs:
+  - {fileID: 5188146389693113403, guid: dfce36907a2b7884fae02a5fd6ac784b, type: 3}
+  - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
+  - {fileID: 5238539502772703667, guid: 037c8e38331e8814595ae6e462bca9e4, type: 3}
+  cellVariant: {fileID: 4778690537846271665, guid: 7944c2bb93d7c0f46a82346cd7882f5c,
+    type: 3}
+  playerHandVariant: {fileID: 5857358951375135966, guid: 16f3027f189a27e41ab5e4128f5021cc,
+    type: 3}
+  roundDuration: 15

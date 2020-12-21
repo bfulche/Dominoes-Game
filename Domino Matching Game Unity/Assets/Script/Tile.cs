@@ -9,22 +9,62 @@ public class Tile : MonoBehaviour
     private Vector2 startingPosition;
     private List<Transform> touchingTiles;
     private Transform myParent;
-    [SerializeField] int id;
-    public int ID => id;
+
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    int id = -1;
+    public int ID
+    {
+        get { return id; }
+        set
+        {
+            if (id != -1)   // only allow id edits if value isn't initialized (-1)
+                return;
+            if (0 > value)  // don't edit if initialization value is negative
+                return;
+
+            id = value; // initialize id using specified value
+        }
+    }
+
+    private static List<Tile> allTiles = new List<Tile>();
 
     private void Awake()
     {
-     startingPosition = transform.position;
-     touchingTiles = new List<Transform>();
-     myParent = transform.parent;
+        startingPosition = transform.position;
+        touchingTiles = new List<Transform>();
+        myParent = transform.parent;
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+
+        allTiles.Add(this);
     }
 
+    /// <summary>
+    /// Resets all tiles to initial positions
+    /// </summary>
+    public static void ResetTiles()
+    {
+        foreach (Tile tile in allTiles)
+        {
+            tile.transform.position = tile.initialPosition;
+            tile.transform.rotation = tile.initialRotation;
+            tile.transform.parent = tile.myParent;
+        }
+    }
 
+    /// <summary>
+    /// Remove Tiles from list in between levels.
+    /// </summary>
+    public static void ClearTileList()
+    {
+        allTiles.Clear();
+    }
 
-
-
-
-
+    public void SetTileID(int newID)
+    {
+        id = newID;
+    }
 
     public void PickUp()
     {
@@ -90,7 +130,7 @@ public class Tile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag!="Cell") return;
+        if (other.tag != "Cell") return;
         if (!touchingTiles.Contains(other.transform))
         {
             //Debug.Log("Has entered cell");
