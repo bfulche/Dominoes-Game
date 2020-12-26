@@ -54,14 +54,14 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (targetPlayer == PhotonNetwork.MasterClient) // don't count host's score
             return;
 
-        if (!playerScores.ContainsKey(targetPlayer))
-        {
+    //    if (!playerScores.ContainsKey(targetPlayer))
+     //   {
             // we don't have this player as a key yet. So this is the first time score being sent
             int playerScore = (int)changedProps[PhotonProperty.PlayerScore];
             currentRoundScore += playerScore;
             playerScores[targetPlayer] = playerScore;   // add player to our dictionary
             Debug.Log("Round score for player:" + targetPlayer.NickName + playerScore + ".Round Score after update: " + currentRoundScore);
-        }
+ //       }
     }
 
     public void OnClick()
@@ -97,10 +97,19 @@ public class RoundManager : MonoBehaviourPunCallbacks
     }
 
     IEnumerator DisplayScoreAfterSeconds()
-    {
-        yield return new WaitForSeconds(10);
+    {                                       // 12/26
+        yield return new WaitForSeconds(5); // artificial delay before working with score values.
+                                            // delay begins after round timer ends. 
+                                            // probably want to give some feedback on UI that score is
+                                            // loading or something.
 
-        scoreBoard.UpdateLocalScoreBoard(currentRoundScore, currentRound);
+        int score = 0;
+        foreach (int value in playerScores.Values)
+        {
+            score += value;
+        }
+
+        scoreBoard.UpdateLocalScoreBoard(score, currentRound);
         scoreBoard.photonView.RPC("ShowScorePanel", RpcTarget.All);
         //scoreBoard.ShowScorePanel();
 
