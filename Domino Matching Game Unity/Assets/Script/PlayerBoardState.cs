@@ -14,6 +14,19 @@ public class PlayerBoardState : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(DelaySetup());
+    }
+
+    IEnumerator DelaySetup()
+    {
+        yield return new WaitForSeconds(1);
+
+
+        InitializeBoardState();
+    }
+
+    public void InitializeBoardState()
+    {
         //acquire personal tiles
         tiles = GameObject.FindObjectsOfType<Tile>();
         tiles = SortTilesByID(tiles);
@@ -69,6 +82,7 @@ public class PlayerBoardState : MonoBehaviour
             // check comparing same "tile"
             if (tiles[i].ID == IDs[i])
             {
+                Debug.Log(tiles[i].ID + "==" + IDs[i]);
                 if (tiles[i].transform.position == positions[i])
                 {
                     // positions close correct. Check rotation

@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StartingGameLevel : MonoBehaviour
 {
-    public static int startingLevel = -1;
+    public static int startingLevel = 0;
 
 
-    public void SetStartingLevel(int level)
+    public void HostSetLevel(int level)
     {
-        startingLevel = level;
+          startingLevel = level;
     }
 }

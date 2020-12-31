@@ -20,20 +20,26 @@ public class LevelManager : MonoBehaviourPun
     private static LevelManager _instance;
 
     public static LevelManager Instance => _instance;
-    private void Start()
+    private void Awake()
     {
         if (_instance != null)
             Destroy(this);
         else
             _instance = this;
 
+        if (PhotonNetwork.IsMasterClient)
+        {
+            this.photonView.RPC("SetStartingLevel", RpcTarget.All, StartingGameLevel.startingLevel);
+        }
+    }
+    [PunRPC]
+    void SetStartingLevel(int level)
+    {
+        data = levelList[level];
+        currentLevel = level;
 
-        data = levelList[StartingGameLevel.startingLevel];
-
-        currentLevel = StartingGameLevel.startingLevel;
         roundManager = GetComponent<RoundManager>();
 
-        // assume first time playing. Use default level data (set via inspector)
         LoadNewLevel();
     }
 
