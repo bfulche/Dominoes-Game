@@ -136,7 +136,11 @@ public class RoundManager : MonoBehaviourPunCallbacks
             // final round completed. Let level manager know to start next level.
             nextLevel = true;
             inputManager.enabled = true;
-            scoreBoard.NextRoundButton.text = "Next Level";
+            // hide next round button
+            ScoreBoard.NextRoundButton.gameObject.SetActive(false);
+            // show main menu button
+            ScoreBoard.MainMenuButton.gameObject.SetActive(true);
+          //  scoreBoard.NextRoundButton.text = "Next Level";
             currentRound = 0;
         }
     }

@@ -27,7 +27,10 @@ public class LevelManager : MonoBehaviourPun
         else
             _instance = this;
 
-        data = levelList[0];
+
+        data = levelList[StartingGameLevel.startingLevel];
+
+        currentLevel = StartingGameLevel.startingLevel;
         roundManager = GetComponent<RoundManager>();
 
         // assume first time playing. Use default level data (set via inspector)

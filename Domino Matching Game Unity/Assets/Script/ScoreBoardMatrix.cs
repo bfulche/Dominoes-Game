@@ -28,8 +28,12 @@ public class ScoreBoardMatrix : MonoBehaviourPun
     [SerializeField] Button buttonToNextRound;
     Text buttonToNextRoundText;
 
+    [SerializeField] Button mainMenuButton;
+
     public Text NextRoundButton => buttonToNextRoundText;
     // player's personal scores could go here. no UI element for it yet
+
+    public Button MainMenuButton => mainMenuButton;
 
     private void Start()
     {
