@@ -37,9 +37,16 @@ MonoBehaviour:
   - DestroyRpc
   - DestroySpaceship
   - Fire
+  - HideScorePanel
+  - LoadNextLevel
   - RespawnSpaceship
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
+<<<<<<< Updated upstream
+=======
+  - SetStartingLevel
+  - ShowScorePanel
+>>>>>>> Stashed changes
   - StartTimer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
