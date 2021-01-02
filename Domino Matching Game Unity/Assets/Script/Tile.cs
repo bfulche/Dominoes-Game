@@ -29,6 +29,8 @@ public class Tile : MonoBehaviour
 
     private static List<Tile> allTiles = new List<Tile>();
 
+    BoxCollider2D parentedCell = null;
+
     private void Awake()
     {
         startingPosition = transform.position;
@@ -68,14 +70,11 @@ public class Tile : MonoBehaviour
 
     public void PickUp()
     {
+        if (parentedCell != null)
+            parentedCell.enabled = true;
         transform.localScale = new Vector3(1.1f, 1.1f, 1);
         gameObject.GetComponent<SpriteRenderer>().sortingOrder = 1;
     }
-
-
-
-
-
 
     public void Drop()
     {
@@ -119,6 +118,10 @@ public class Tile : MonoBehaviour
         else
         {
             transform.parent = currentCell;
+            // getting and disabling cell's box collider. When trying to pickup tile later. The collider sometimes
+            // gets in the way.
+            parentedCell = currentCell.GetComponent<BoxCollider2D>();
+            parentedCell.enabled = false;
             StartCoroutine(SlotIntoPlace(transform.position, newPosition));
         }
     }
