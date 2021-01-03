@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Level 2
   m_EditorClassIdentifier: 
   tilePrefabs:
-  - {fileID: 5188146389693113403, guid: dfce36907a2b7884fae02a5fd6ac784b, type: 3}
-  - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
+  - {fileID: 3560837402697111590, guid: c6a257ac29e62b54f8fe9cf4f36f62ed, type: 3}
   - {fileID: 5238539502772703667, guid: 037c8e38331e8814595ae6e462bca9e4, type: 3}
-  cellVariant: {fileID: 4778690537846271665, guid: 7944c2bb93d7c0f46a82346cd7882f5c,
+  - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
+  - {fileID: 1375524740, guid: faf94103571e6ae4a92b8a9f26aa050e, type: 3}
+  cellVariant: {fileID: 7028032411517646381, guid: 2399f810cd75e50489ba3d194d72c224,
     type: 3}
-  playerHandVariant: {fileID: 5857358951375135966, guid: 16f3027f189a27e41ab5e4128f5021cc,
+  playerHandVariant: {fileID: 5812988688963610808, guid: 7623d198365cfb145ab1f446b1299401,
     type: 3}
-  roundDuration: 15
+  roundDuration: 2
