@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5792c2cb4338f6443923b47c44fac1cd, type: 3}
-  m_Name: Level 2
+  m_Name: Level 3
   m_EditorClassIdentifier: 
   tilePrefabs:
   - {fileID: 1375524740, guid: faf94103571e6ae4a92b8a9f26aa050e, type: 3}
   - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
+  - {fileID: -3824086385938968653, guid: ae3a75db55e1ce6448e7990356453ee9, type: 3}
   - {fileID: 5238539502772703667, guid: 037c8e38331e8814595ae6e462bca9e4, type: 3}
   - {fileID: 3560837402697111590, guid: c6a257ac29e62b54f8fe9cf4f36f62ed, type: 3}
-  cellVariant: {fileID: 146115479360634514, guid: 750963514f6d027448ca5b23c11290ed,
+  - {fileID: 5188146389693113403, guid: dfce36907a2b7884fae02a5fd6ac784b, type: 3}
+  cellVariant: {fileID: 5392029996487421647, guid: f1ae8fe3f6985fc469acbfd76f36cd74,
     type: 3}
-  playerHandVariant: {fileID: -4346709414383357337, guid: 7623d198365cfb145ab1f446b1299401,
+  playerHandVariant: {fileID: 8963717185692152276, guid: 460cd2ed8a279f946aa1fcab6065b7f0,
     type: 3}
   roundDuration: 120
