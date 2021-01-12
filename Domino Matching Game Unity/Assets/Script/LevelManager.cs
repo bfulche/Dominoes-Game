@@ -62,12 +62,17 @@ public class LevelManager : MonoBehaviourPun
 
         List<Transform> possiblePositions = playerHand.Slots.ToList();
 
+        float[] possibleRotations = new float[] { 0f, 45f, 90f, 135f, 180f, 225f, 270f, 315f };
+
         for (int i = 0; i < count; i++)
         {
             int randomIndex = Random.Range(0, possiblePositions.Count);
+            int randomRotation = Random.Range(0, 8);
 
             Tile tile = Instantiate(data.TilePrefabs[i], possiblePositions[randomIndex].position, possiblePositions[randomIndex].rotation);
             tile.ID = i;
+
+            tile.transform.Rotate(0f, 0f, possibleRotations[randomRotation]);
 
             // remove used starting position from list so it can't be picked again by another tile
             possiblePositions.RemoveAt(randomIndex);

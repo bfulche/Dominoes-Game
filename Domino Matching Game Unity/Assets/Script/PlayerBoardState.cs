@@ -86,6 +86,10 @@ public class PlayerBoardState : MonoBehaviour
                 if (tiles[i].transform.position == positions[i])
                 {
                     // positions close correct. Check rotation
+
+                    // if needed. Can do currentPlayerSocre++;  here to add 1 point for correct position. and 
+                    // in next if-statement add point for correct rotation - OR - some variation/manipulation for scoring
+
                     if (Quaternion.Angle(tiles[i].transform.rotation, rotations[i]) < 10f)
                     {
                         // rotations are within acceptable range to be considered "equal"
