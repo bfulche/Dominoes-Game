@@ -21,4 +21,8 @@ MonoBehaviour:
     type: 3}
   playerHandVariant: {fileID: 5812988688963610808, guid: 7623d198365cfb145ab1f446b1299401,
     type: 3}
+<<<<<<< Updated upstream
   roundDuration: 2
+=======
+  roundDuration: 3
+>>>>>>> Stashed changes

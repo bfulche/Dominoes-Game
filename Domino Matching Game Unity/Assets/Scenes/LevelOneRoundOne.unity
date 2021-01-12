@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26579d338c48ae42a834eb63dac626b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTime: 5
+  startTime: 2
   timerIsRunning: 0
   timeText: {fileID: 1432633711}
   toScoreboardButton: {fileID: 1956877571}
@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startRoundButton: {fileID: 927714924}
+  roundDisplay: {fileID: 933389139}
   scoreBoard: {fileID: 99626668}
 --- !u!114 &99626667
 MonoBehaviour:
@@ -1413,6 +1414,7 @@ RectTransform:
   - {fileID: 1432633710}
   - {fileID: 791036705}
   - {fileID: 742775565}
+  - {fileID: 933389141}
   - {fileID: 1956877572}
   - {fileID: 927714923}
   m_Father: {fileID: 328860863}
@@ -1495,8 +1497,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -199, y: 263}
-  m_SizeDelta: {x: 188.4881, y: 30}
+  m_AnchoredPosition: {x: -290.8, y: 263}
+  m_SizeDelta: {x: 81.21181, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742775566
 MonoBehaviour:
@@ -1531,7 +1533,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: Round 1
+  m_Text: 'Round '
 --- !u!222 &742775567
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2101,7 +2103,7 @@ RectTransform:
   m_Children:
   - {fileID: 2030735767}
   m_Father: {fileID: 736526368}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2201,6 +2203,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927714922}
   m_CullTransparentMesh: 0
+--- !u!1 &933389138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 933389141}
+  - component: {fileID: 933389140}
+  - component: {fileID: 933389139}
+  m_Layer: 5
+  m_Name: RoundNumber
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &933389139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933389138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 25
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 78
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 0
+  m_Text: 
+--- !u!222 &933389140
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933389138}
+  m_CullTransparentMesh: 0
+--- !u!224 &933389141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933389138}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.7111813, y: 1.7111813, z: 1.7111813}
+  m_Children: []
+  m_Father: {fileID: 736526368}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -197, y: 263}
+  m_SizeDelta: {x: 31.091476, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &947685503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,7 +3120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1327881156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3885,7 +3966,7 @@ RectTransform:
   m_Children:
   - {fileID: 751008035}
   m_Father: {fileID: 736526368}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

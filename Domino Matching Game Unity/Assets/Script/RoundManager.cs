@@ -15,6 +15,9 @@ public class RoundManager : MonoBehaviourPunCallbacks
     int currentRoundScore = 0;
     int currentRound;
 
+    private int currentRoundNumber;        //The current round number, an int between 1-3
+    public Text roundDisplay;              //The UI text element displaying the current Round
+
     private static readonly int totalRounds = 3;    // will always have 3 rounds to a level.
 
     [SerializeField] ScoreBoardMatrix scoreBoard;
@@ -38,6 +41,21 @@ public class RoundManager : MonoBehaviourPunCallbacks
         }
 
         currentRound = 0;   // start at the first round
+        currentRoundNumber = currentRound + 1;     //Turning currentRoundNumber to 1 for UI display purposes
+        //roundDisplay = GetComponent<Text>();
+
+        Debug.Log("currentRoundNumber is " + currentRoundNumber);
+    }
+
+
+    private void Update()
+    {
+        currentRoundNumber = currentRound + 1;
+        roundDisplay.text = currentRoundNumber.ToString();
+        /*if(Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log("The current round number is " + currentRoundNumber);
+        }*/
     }
 
     /// <summary>
