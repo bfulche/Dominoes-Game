@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8843281448993408955}
   - component: {fileID: 8963717185692152276}
   m_Layer: 0
-  m_Name: PH - 6 slots1 1
+  m_Name: PH - 6 slots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65,11 +65,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8033484532575987604}
-  - component: {fileID: 8033484532575987561}
   - component: {fileID: 8033484532575987560}
   m_Layer: 0
   m_Name: PH6-3
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,18 +87,6 @@ Transform:
   m_Father: {fileID: 8843281448993408955}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8033484532575987561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484532575987606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8033484532575987560
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -107,7 +94,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484532575987606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -135,11 +122,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8033484532699674623}
-  - component: {fileID: 8033484532699674617}
   - component: {fileID: 8033484532699674619}
   m_Layer: 0
   m_Name: PH6-1
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,18 +144,6 @@ Transform:
   m_Father: {fileID: 8843281448993408955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8033484532699674617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484532699674596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8033484532699674619
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -177,7 +151,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484532699674596}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -205,11 +179,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8033484532875246477}
-  - component: {fileID: 8033484532875246476}
   - component: {fileID: 8033484532875246466}
   m_Layer: 0
   m_Name: PH6-4
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,18 +201,6 @@ Transform:
   m_Father: {fileID: 8843281448993408955}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8033484532875246476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484532875246479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8033484532875246466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,7 +208,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484532875246479}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -276,10 +237,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8033484534363207280}
   - component: {fileID: 8033484534363207282}
-  - component: {fileID: 8033484534363207292}
   m_Layer: 0
   m_Name: PH6-5
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,7 +265,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484534363207293}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -324,18 +284,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8033484534363207292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484534363207293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8033484534436316590
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,10 +294,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8033484534436316577}
   - component: {fileID: 8033484534436316579}
-  - component: {fileID: 8033484534436316589}
   m_Layer: 0
   m_Name: PH6-6
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -375,7 +322,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484534436316590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -394,18 +341,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8033484534436316589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484534436316590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8033484534705824852
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,10 +351,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8033484534705824815}
   - component: {fileID: 8033484534705824810}
-  - component: {fileID: 8033484534705824811}
   m_Layer: 0
   m_Name: PH6-2
-  m_TagString: Tile
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -445,7 +379,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8033484534705824852}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -464,15 +398,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8033484534705824811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8033484534705824852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281f047271f375844be94a13f3c846b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
