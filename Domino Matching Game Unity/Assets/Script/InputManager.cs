@@ -21,13 +21,25 @@ public class InputManager : MonoBehaviourPunCallbacks
 
     [SerializeField] GameObject ScoreboardPanel;
 
+    private static InputManager _instance;
 
+    public static InputManager Instance => _instance;
 
     //Trying to create an array of dominoes for each player and a round score.
     void Awake()
     {
         dominoArray = GameObject.FindGameObjectsWithTag("Tile");
         //ScoreboardPanel.SetActive(false);
+
+        // _instance won't be null after going back to main menu, 
+        // but when starting a new level after reconnecting etc...
+        // instance will be gone. So we'll replace the instance with the most recently found InputManager
+        if (_instance != null)
+            Destroy(_instance);
+
+        _instance = this;
+
+
     }
     
     

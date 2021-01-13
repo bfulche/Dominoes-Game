@@ -73,6 +73,7 @@ public class LevelManager : MonoBehaviourPun
             tile.ID = i;
 
             tile.transform.Rotate(0f, 0f, possibleRotations[randomRotation]);
+            tile.SetInitialPositionAndRotation(tile.transform.position, tile.transform.rotation);
 
             // remove used starting position from list so it can't be picked again by another tile
             possiblePositions.RemoveAt(randomIndex);

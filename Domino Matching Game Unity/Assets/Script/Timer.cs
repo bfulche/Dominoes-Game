@@ -53,7 +53,7 @@ public class Timer : MonoBehaviourPun
                 Debug.Log("Time's Up!");
 
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+                InputManager.Instance.enabled = false;
                 timerDone?.Invoke();  //let subscribed functions know time is up.
 
                 // only allows host to host (master client) to view/press button to go to scoreboard

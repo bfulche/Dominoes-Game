@@ -12,6 +12,9 @@ public class Tile : MonoBehaviour
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
+
+
+
     int id = -1;
     public int ID
     {
@@ -42,6 +45,12 @@ public class Tile : MonoBehaviour
         allTiles.Add(this);
     }
 
+    public void SetInitialPositionAndRotation(Vector3 newPosition, Quaternion newRotation)
+    {
+        initialPosition = newPosition;
+        initialRotation = newRotation;
+    }
+
     /// <summary>
     /// Resets all tiles to initial positions
     /// </summary>
@@ -52,6 +61,14 @@ public class Tile : MonoBehaviour
             tile.transform.position = tile.initialPosition;
             tile.transform.rotation = tile.initialRotation;
             tile.transform.parent = tile.myParent;
+
+            // should fix being unable to slot a tile into a cell in the next round. The cell still had it's collider disabled until
+            // the previously slotted tile was picked up and the parented cell was re-enabled as part of picking up
+            if (tile.parentedCell != null)
+            {
+                tile.parentedCell.enabled = true;
+                tile.parentedCell = null;
+            }
         }
     }
 
@@ -186,7 +203,9 @@ public class Tile : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.transform.Rotate(0.0f, 0.0f, -45.0f, Space.World);
+            // check input manager enabled
+            if (InputManager.Instance.enabled)
+                this.transform.Rotate(0.0f, 0.0f, -45.0f, Space.World);
 
         }
     }

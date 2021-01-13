@@ -42,7 +42,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
 
         currentRound = 0;   // start at the first round
         currentRoundNumber = currentRound + 1;      // Turning currentRoundNumber to 1 for UI display purposes
-        roundDisplay.text = "Round " + currentRoundNumber.ToString();
+        roundDisplay.text = currentRoundNumber.ToString();
 
         Debug.Log("currentRoundNumber is " + currentRoundNumber);
     }
@@ -135,7 +135,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         currentRound++;
 
         currentRoundNumber = currentRound + 1;
-        roundDisplay.text = "Round " + currentRoundNumber.ToString();
+        roundDisplay.text = currentRoundNumber.ToString();
 
         currentRoundScore = 0;
         if (currentRound < totalRounds)
