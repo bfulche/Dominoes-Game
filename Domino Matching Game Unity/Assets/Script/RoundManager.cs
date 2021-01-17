@@ -91,6 +91,8 @@ public class RoundManager : MonoBehaviourPunCallbacks
         //  Send host's current board state.
         SendBoardState();
 
+
+
         // Send message to other clients that round is starting.
         timer.photonView.RPC("StartTimer", RpcTarget.All);
         //start round timer
@@ -123,7 +125,10 @@ public class RoundManager : MonoBehaviourPunCallbacks
             score += value;
         }
 
-        scoreBoard.UpdateLocalScoreBoard(score, currentRound);
+        Image hostBoard = null;
+        Image playerBoard = null;
+
+        scoreBoard.UpdateLocalScoreBoard(score, currentRound, hostBoard, playerBoard);
         scoreBoard.photonView.RPC("ShowScorePanel", RpcTarget.All);
         //scoreBoard.ShowScorePanel();
 
@@ -180,6 +185,8 @@ public class RoundManager : MonoBehaviourPunCallbacks
     {
         if (!PhotonNetwork.IsMasterClient)  // should never happen. If it did. Logic is wrong somewhere
             return;
+
+        ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/HostBoard"); // take a picture of host's board
 
         Tile[] tiles;
 

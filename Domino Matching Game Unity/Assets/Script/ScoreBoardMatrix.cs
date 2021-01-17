@@ -65,7 +65,7 @@ public class ScoreBoardMatrix : MonoBehaviourPun
         totalGameScoreTally = 0;
     }
 
-    public void UpdateLocalScoreBoard(int roundScore, int currentRound)
+    public void UpdateLocalScoreBoard(int roundScore, int currentRound, Image hostImage, Image playerImage)
     {
         // 12/20/2020 bug: Client score board sets round2/3 scores as 0. But host is receiving correct score...
         // need to identify what's causing client-display issue.
