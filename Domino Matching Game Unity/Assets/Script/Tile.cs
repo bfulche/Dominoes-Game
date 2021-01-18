@@ -31,6 +31,7 @@ public class Tile : MonoBehaviour
     }
 
     private static List<Tile> allTiles = new List<Tile>();
+    private static List<Tile> mimicTiles = new List<Tile>();
 
     BoxCollider2D parentedCell = null;
 
@@ -72,12 +73,37 @@ public class Tile : MonoBehaviour
         }
     }
 
+    public static void ResetMimics()
+    {
+        foreach (Tile tile in mimicTiles)
+        {
+            tile.transform.position = tile.initialPosition;
+            tile.transform.rotation = tile.initialRotation;
+            tile.transform.parent = tile.myParent;
+
+            // should fix being unable to slot a tile into a cell in the next round. The cell still had it's collider disabled until
+            // the previously slotted tile was picked up and the parented cell was re-enabled as part of picking up
+            if (tile.parentedCell != null)
+            {
+                tile.parentedCell.enabled = true;
+                tile.parentedCell = null;
+            }
+        }
+    }
+
+    public void SetAsMimic()
+    {
+        allTiles.Remove(this);
+        mimicTiles.Add(this);
+    }
+
     /// <summary>
     /// Remove Tiles from list in between levels.
     /// </summary>
     public static void ClearTileList()
     {
         allTiles.Clear();
+        mimicTiles.Clear();
     }
 
     public void SetTileID(int newID)

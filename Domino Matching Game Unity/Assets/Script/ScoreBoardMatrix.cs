@@ -8,17 +8,6 @@ using UnityEngine.UI;
 
 public class ScoreBoardMatrix : MonoBehaviourPun
 {
-    //   // round scores - only ever 3 total rounds so this is simple enough
-    //   [SerializeField] Text round1Score;
-    //   [SerializeField] Text round2Score;
-    //   [SerializeField] Text round3Score;
-    //
-    //   // total scores
-    //   [SerializeField] Text totalScore1;
-    //   [SerializeField] Text totalScore2;
-    //   [SerializeField] Text totalScore3;
-
-  //  int currentRound = 1;
     int totalGameScoreTally = 0;
 
     [SerializeField] GameObject scorePanel;
@@ -30,9 +19,12 @@ public class ScoreBoardMatrix : MonoBehaviourPun
 
     [SerializeField] Button mainMenuButton;
 
-    public Text NextRoundButton => buttonToNextRoundText;
+  //  [SerializeField] Image hostImage, localImage;
+
+    public Text NextRoundText => buttonToNextRoundText;
     // player's personal scores could go here. no UI element for it yet
 
+    public Button NextRoundButton => buttonToNextRound;
     public Button MainMenuButton => mainMenuButton;
 
     private void Start()
@@ -57,6 +49,9 @@ public class ScoreBoardMatrix : MonoBehaviourPun
     [PunRPC]
     public void HideScorePanel()
     {
+        // clean up board state to redo round.
+        Tile.ResetTiles();
+        LevelManager.Instance.CleanMimic();
         scorePanel.SetActive(false);
     }
 
@@ -65,10 +60,8 @@ public class ScoreBoardMatrix : MonoBehaviourPun
         totalGameScoreTally = 0;
     }
 
-    public void UpdateLocalScoreBoard(int roundScore, int currentRound, Image hostImage, Image playerImage)
+    public void UpdateLocalScoreBoard(int roundScore, int currentRound)
     {
-        // 12/20/2020 bug: Client score board sets round2/3 scores as 0. But host is receiving correct score...
-        // need to identify what's causing client-display issue.
         Debug.Log("Received Round Score: " + roundScore +". Received Current Round Integer: " + currentRound);
 
         roundScores[currentRound].text = roundScore.ToString();
@@ -76,6 +69,8 @@ public class ScoreBoardMatrix : MonoBehaviourPun
         totalGameScoreTally += roundScore;
         totalScores[currentRound].text = totalGameScoreTally.ToString();
 
+      //  hostImage.sprite = hostSprite;
+      //  localImage.sprite = playerSprite;
        // currentRound++;
     }
     /*

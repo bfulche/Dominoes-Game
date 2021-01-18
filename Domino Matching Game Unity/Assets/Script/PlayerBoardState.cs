@@ -85,7 +85,7 @@ public class PlayerBoardState : MonoBehaviour
                 Debug.Log(tiles[i].ID + "==" + IDs[i]);
                 if (tiles[i].transform.position == positions[i])
                 {
-                    // positions close correct. Check rotation
+                    // positions are correct. Check rotation
 
                     // if needed. Can do currentPlayerSocre++;  here to add 1 point for correct position. and 
                     // in next if-statement add point for correct rotation - OR - some variation/manipulation for scoring

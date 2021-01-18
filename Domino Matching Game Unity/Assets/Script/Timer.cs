@@ -30,6 +30,8 @@ public class Timer : MonoBehaviourPun
     {
         timeRemaining = startTime;
         timerIsRunning = true;
+
+        LevelManager.Instance.LoadMimicLevel();
     }
 
     public void SetRoundTimer(float duration)

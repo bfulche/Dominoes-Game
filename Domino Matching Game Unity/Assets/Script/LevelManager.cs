@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Based on LevelData object currently reference - populates the gameplay scene with level data, and keeps track of rounds.
@@ -15,6 +16,9 @@ public class LevelManager : MonoBehaviourPun
 
     int currentLevel = 0;
     [SerializeField] Transform gameplayContainer;   // destroy all children of this object during scene clean up/ level switch
+    [SerializeField] Transform mimicContainer;
+    [SerializeField] RawImage hostCamImage;
+    [SerializeField] RawImage localCamImage;
     RoundManager roundManager;
 
     private static LevelManager _instance;
@@ -118,6 +122,85 @@ public class LevelManager : MonoBehaviourPun
         for (int i = 0; i < childrenCount; i++)
         {
             Destroy(gameplayContainer.GetChild(i).gameObject);
+        }
+    }
+
+    public void CleanMimic()
+    {
+        int childrenCount = mimicContainer.childCount;
+
+        for (int i = 0; i < childrenCount; i++)
+        {
+            Destroy(mimicContainer.GetChild(i).gameObject);
+        }
+    }
+
+    public void LoadMimicLevel()
+    {
+       // // Host will just use the local instead of setting up a dummy copy of their board
+       // if (PhotonNetwork.IsMasterClient)
+       // {
+       //     Texture temp = localCamImage.texture;
+       //     hostCamImage.texture = temp;
+       //     return;
+       // }
+
+        StartCoroutine(SetupLocalCopyOfHostBoard());
+        // CleanMimic(parent);
+        //
+        // Instantiate(data.CellVariant, parent);
+        // PlayerHand playerHand = Instantiate(data.PlayerHand, parent);
+        // int count = data.DominoCount;
+        //
+        // List<Transform> possiblePositions = playerHand.Slots.ToList();
+        //
+        // for (int i = 0; i < count; i++)
+        // {
+        //     Tile tile = Instantiate(data.TilePrefabs[i], possiblePositions[i].position, possiblePositions[i].rotation);
+        //     tile.ID = i;
+        //
+        // }
+    }
+
+    IEnumerator SetupLocalCopyOfHostBoard()
+    {
+        CleanMimic();
+
+        yield return new WaitForEndOfFrame();
+        List<Tile> mimicTiles = new List<Tile>();
+        Instantiate(data.CellVariant, mimicContainer);
+        PlayerHand playerHand = Instantiate(data.PlayerHand, mimicContainer);
+        int count = data.DominoCount;
+
+        List<Transform> possiblePositions = playerHand.Slots.ToList();
+        //   List<Tile> mimicTiles = new List<Tile>();
+
+        for (int i = 0; i < count; i++)
+        {
+            Tile tile = Instantiate(data.TilePrefabs[i], possiblePositions[i].position, possiblePositions[i].rotation, mimicContainer);
+            tile.ID = i;
+            tile.SetAsMimic();
+            mimicTiles.Add(tile);
+        }
+
+        yield return new WaitForSeconds(1f);
+
+        // rotate according to data sent by host
+        int[] IDs = (int[])PhotonNetwork.CurrentRoom.CustomProperties[PhotonProperty.DominoIDS];
+        Vector3[] positions = (Vector3[])PhotonNetwork.CurrentRoom.CustomProperties[PhotonProperty.DominoPoisitions];
+        Quaternion[] rotations = (Quaternion[])PhotonNetwork.CurrentRoom.CustomProperties[PhotonProperty.DominoRotations];
+        // int length = IDs.Length;
+
+        // rearrange tiles in list to match host data. data should be in id order
+        for (int i = 0; i < mimicTiles.Count; i++)
+        {
+            if (mimicTiles[i].ID == IDs[i])
+            {
+                Vector3 newPosition = new Vector3(positions[i].x - 100f, positions[i].y, positions[i].z);
+                mimicTiles[i].transform.position = newPosition;
+                mimicTiles[i].transform.rotation = rotations[i];
+            }
+
         }
     }
 }

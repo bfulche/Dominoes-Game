@@ -13,6 +13,7 @@ public static class PhotonProperty
     public static readonly string DominoIDS = "DominoIDs";
     public static readonly string DominoPoisitions = "DominoPositions";
     public static readonly string DominoRotations = "DominoRotations";
+    public static readonly string HostScreenShot = "HostScreenShot";
 
     public static readonly string CurrentRound = "CurrentRound";
     public static readonly string RoundScores = "RoundScores";

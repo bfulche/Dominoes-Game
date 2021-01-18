@@ -97,7 +97,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         timer.photonView.RPC("StartTimer", RpcTarget.All);
         //start round timer
 
-        timer.StartTimer();
+     //   timer.StartTimer();
 
 
         playerScores.Clear();   // should remove all keys in dictionary?
@@ -113,7 +113,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
     }
 
     IEnumerator DisplayScoreAfterSeconds()
-    {                                       // 12/26
+    {                    
         yield return new WaitForSeconds(5); // artificial delay before working with score values.
                                             // delay begins after round timer ends. 
                                             // probably want to give some feedback on UI that score is
@@ -125,10 +125,9 @@ public class RoundManager : MonoBehaviourPunCallbacks
             score += value;
         }
 
-        Image hostBoard = null;
-        Image playerBoard = null;
 
-        scoreBoard.UpdateLocalScoreBoard(score, currentRound, hostBoard, playerBoard);
+
+        scoreBoard.UpdateLocalScoreBoard(score, currentRound);
         scoreBoard.photonView.RPC("ShowScorePanel", RpcTarget.All);
         //scoreBoard.ShowScorePanel();
 
@@ -146,13 +145,13 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (currentRound < totalRounds)
         {
             // clean up board state to redo round.
-            Tile.ResetTiles();
+          //  Tile.ResetTiles();
             // re-enable host's start round button
             if (PhotonNetwork.IsMasterClient)
                 startRoundButton.gameObject.SetActive(true);
 
             inputManager.enabled = true;
-            scoreBoard.NextRoundButton.text = "To Round " + (currentRound + 1).ToString();
+            scoreBoard.NextRoundText.text = "To Round " + (currentRound + 1).ToString();
         }
         else
         {
@@ -160,10 +159,11 @@ public class RoundManager : MonoBehaviourPunCallbacks
             nextLevel = true;
             inputManager.enabled = true;
             // hide next round button
-            ScoreBoard.NextRoundButton.gameObject.SetActive(false);
+         //   ScoreBoard.NextRoundButton.gameObject.SetActive(false);
+        //    ScoreBoard.NextRoundText.gameObject.SetActive(false);
             // show main menu button
             ScoreBoard.MainMenuButton.gameObject.SetActive(true);
-          //  scoreBoard.NextRoundButton.text = "Next Level";
+            scoreBoard.NextRoundText.text = "Next Level";
             currentRound = 0;
         }
     }
@@ -178,6 +178,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
             //  LevelManager.Instance.LoadNextLevel();
         }
 
+
         scoreBoard.photonView.RPC("HideScorePanel", RpcTarget.All);
     }
 
@@ -186,7 +187,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient)  // should never happen. If it did. Logic is wrong somewhere
             return;
 
-        ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/HostBoard"); // take a picture of host's board
+     //   ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/HostBoard"); // take a picture of host's board
 
         Tile[] tiles;
 
@@ -199,7 +200,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         int[] IDs = new int[length];                        // each tile's ID
         Vector3[] positions = new Vector3[length];          // each tile's world position as Vector3
         Quaternion[] rotations = new Quaternion[length];    // each tile's rotation as a Quaternion
-
+        
         // populate arrays
         for (int i = 0; i < tiles.Length; i++)
         {

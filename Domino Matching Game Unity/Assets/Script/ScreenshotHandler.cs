@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Crfedit to https://www.youtube.com/watch?v=lT-SRLKUe5k for taking screenshots from in game camera
@@ -9,9 +10,12 @@ public class ScreenshotHandler : MonoBehaviour
 {
     private static ScreenshotHandler instance;
 
+    public static ScreenshotHandler Instance => instance;
     private Camera myCamera;
     private bool takeScreenshotOnNextFrame;
 
+    Sprite screenShot;
+    public Sprite ScreenShot => screenShot;
     private void Awake()
     {
         instance = this;
@@ -28,6 +32,8 @@ public class ScreenshotHandler : MonoBehaviour
             Texture2D renderResult = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.ARGB32, false);
             Rect rect = new Rect(0, 0, renderTexture.width, renderTexture.height);
             renderResult.ReadPixels(rect, 0, 0);
+
+           screenShot = Sprite.Create(renderResult, rect, Vector2.zero);
 
             byte[] byteArray = renderResult.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.dataPath + "/CameraScreenshot.png",byteArray);
