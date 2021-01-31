@@ -28,6 +28,8 @@ public class ChatHandler : MonoBehaviourPun
     public int maxMessages = 1000;
 
     [SerializeField] List<Message> messageList = new List<Message>();
+
+    [SerializeField] string chatBoxName;
     void Start()
     {
         playerName = PhotonNetwork.LocalPlayer.NickName;
@@ -104,6 +106,8 @@ public class ChatHandler : MonoBehaviourPun
         {
             unreadNotificationmarker.SetActive(true);
         }
+
+        ChatLogger.Instance.Log(chatBoxName, player, timeStamp, message);
     }
 }
 [System.Serializable]

@@ -27,6 +27,8 @@ public class RoundManager : MonoBehaviourPunCallbacks
 
     public ScoreBoardMatrix ScoreBoard => scoreBoard;
 
+    [SerializeField] TabGroup tabGroup1, tabGroup2;
+    [SerializeField] TabButton defaultTab1, defaultTab2;
     // Start is called before the first frame update
     void Start()
     {
@@ -150,7 +152,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
             if (PhotonNetwork.IsMasterClient)
                 startRoundButton.gameObject.SetActive(true);
 
-            inputManager.enabled = true;
+         //   inputManager.enabled = true;
             scoreBoard.NextRoundText.text = "To Round " + (currentRound + 1).ToString();
         }
         else
@@ -159,13 +161,17 @@ public class RoundManager : MonoBehaviourPunCallbacks
             nextLevel = true;
             inputManager.enabled = true;
             // hide next round button
-         //   ScoreBoard.NextRoundButton.gameObject.SetActive(false);
-        //    ScoreBoard.NextRoundText.gameObject.SetActive(false);
+            ScoreBoard.NextRoundButton.gameObject.SetActive(false);
+            ScoreBoard.NextRoundText.gameObject.SetActive(false);
             // show main menu button
             ScoreBoard.MainMenuButton.gameObject.SetActive(true);
             scoreBoard.NextRoundText.text = "Next Level";
             currentRound = 0;
         }
+
+        // set current tab to Scoreboard and What happened
+        tabGroup1.OnTabSelected(defaultTab1);
+        tabGroup2.OnTabSelected(defaultTab2);
     }
 
 
@@ -178,7 +184,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
             //  LevelManager.Instance.LoadNextLevel();
         }
 
-
+        inputManager.enabled = true;
         scoreBoard.photonView.RPC("HideScorePanel", RpcTarget.All);
     }
 
