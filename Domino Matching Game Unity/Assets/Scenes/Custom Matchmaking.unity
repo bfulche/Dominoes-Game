@@ -1676,7 +1676,6 @@ GameObject:
   - component: {fileID: 735157835}
   - component: {fileID: 735157834}
   - component: {fileID: 735157836}
-  - component: {fileID: 735157837}
   m_Layer: 5
   m_Name: RoomsContainerDisplayer(1)
   m_TagString: Untagged
@@ -1759,26 +1758,14 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0
+  m_Spacing: -230
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
+  m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &735157837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 735157832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79462bb30251f4c4c97bb620d6a49420, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &755020423
 GameObject:
   m_ObjectHideFlags: 0
