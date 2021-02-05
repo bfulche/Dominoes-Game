@@ -54,7 +54,7 @@ public class ChatHandler : MonoBehaviourPun
     void Update()
     {
 
-        if (inputField.text != "")
+        if (inputField.text != "" && inputField.gameObject.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
