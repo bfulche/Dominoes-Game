@@ -53,6 +53,7 @@ public class ScoreBoardMatrix : MonoBehaviourPun
         Tile.ResetTiles();
         LevelManager.Instance.CleanMimic();
         scorePanel.SetActive(false);
+        InputManager.Instance.enabled = true;
     }
 
     public void NewLevel()
