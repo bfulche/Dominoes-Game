@@ -21,7 +21,7 @@ public class Timer : MonoBehaviourPun
 
     private void Start()
     {
-       // timerIsRunning = true;
+        // timerIsRunning = true;
         toScoreboardButton.SetActive(false);
     }
 
@@ -30,7 +30,7 @@ public class Timer : MonoBehaviourPun
     {
         timeRemaining = startTime;
         timerIsRunning = true;
-
+        timeText.gameObject.SetActive(true);
         LevelManager.Instance.LoadMimicLevel();
     }
 
@@ -56,13 +56,18 @@ public class Timer : MonoBehaviourPun
 
                 //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 InputManager.Instance.enabled = false;
-                timerDone?.Invoke();  //let subscribed functions know time is up.
+
+                if (PhotonNetwork.IsMasterClient)
+                    this.photonView.RPC("TimerDone", RpcTarget.All);
+                else
+                    timeText.text = "Waiting on leader";
+                // timerDone?.Invoke();  //let subscribed functions know time is up.
 
                 // only allows host to host (master client) to view/press button to go to scoreboard
-             //   if (PhotonNetwork.IsMasterClient)
-             //   {
-             //       toScoreboardButton.SetActive(true);
-             //   }
+                //   if (PhotonNetwork.IsMasterClient)
+                //   {
+                //       toScoreboardButton.SetActive(true);
+                //   }
 
                 // need some way of confirming data has been updated, and players finished uploading data to server before switching scenes
                 // I think score calculating should be at the start of the next scene? Is there a benefit to calculating scores before
@@ -70,6 +75,12 @@ public class Timer : MonoBehaviourPun
 
             }
         }
+    }
+
+    [PunRPC]
+    public void TimerDone()
+    {
+        timerDone?.Invoke();
     }
 
 
