@@ -49,11 +49,11 @@ public class RoundManager : MonoBehaviourPunCallbacks
         Debug.Log("currentRoundNumber is " + currentRoundNumber);
     }
 
- //   private void Update()
- //   {
- //       currentRoundNumber = currentRound + 1;
- //       roundDisplay.text = currentRoundNumber.ToString();
- //   }
+    //   private void Update()
+    //   {
+    //       currentRoundNumber = currentRound + 1;
+    //       roundDisplay.text = currentRoundNumber.ToString();
+    //   }
 
 
     /// <summary>
@@ -70,14 +70,14 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (targetPlayer == PhotonNetwork.MasterClient) // don't count host's score
             return;
 
-    //    if (!playerScores.ContainsKey(targetPlayer))
-     //   {
-            // we don't have this player as a key yet. So this is the first time score being sent
-            int playerScore = (int)changedProps[PhotonProperty.PlayerScore];
-            currentRoundScore += playerScore;
-            playerScores[targetPlayer] = playerScore;   // add player to our dictionary
-            Debug.Log("Round score for player:" + targetPlayer.NickName + playerScore + ".Round Score after update: " + currentRoundScore);
- //       }
+        //    if (!playerScores.ContainsKey(targetPlayer))
+        //   {
+        // we don't have this player as a key yet. So this is the first time score being sent
+        int playerScore = (int)changedProps[PhotonProperty.PlayerScore];
+        currentRoundScore += playerScore;
+        playerScores[targetPlayer] = playerScore;   // add player to our dictionary
+        Debug.Log("Round score for player:" + targetPlayer.NickName + playerScore + ".Round Score after update: " + currentRoundScore);
+        //       }
     }
 
     public void OnClick()
@@ -99,14 +99,14 @@ public class RoundManager : MonoBehaviourPunCallbacks
         timer.photonView.RPC("StartTimer", RpcTarget.All);
         //start round timer
 
-     //   timer.StartTimer();
+        //   timer.StartTimer();
 
 
         playerScores.Clear();   // should remove all keys in dictionary?
-                                                        // not sure if this is part of the client-side bug
-                                                        // for round 2/3 scoring showing up as 0
+                                // not sure if this is part of the client-side bug
+                                // for round 2/3 scoring showing up as 0
 
-      //  playerScores.Clear();   // ready for new round
+        //  playerScores.Clear();   // ready for new round
     }
 
     private void DisplayScore()
@@ -115,16 +115,19 @@ public class RoundManager : MonoBehaviourPunCallbacks
     }
 
     IEnumerator DisplayScoreAfterSeconds()
-    {                    
+    {
         yield return new WaitForSeconds(5); // artificial delay before working with score values.
                                             // delay begins after round timer ends. 
                                             // probably want to give some feedback on UI that score is
                                             // loading or something.
 
         int score = 0;
-        foreach (int value in playerScores.Values)
+        foreach (Player player in playerScores.Keys)
         {
-            score += value;
+            score += playerScores[player];
+
+            // log player's score
+            ScoreLogger.Instance.LogPlayerRoundScore(player, currentRoundNumber, playerScores[player]);
         }
 
 
@@ -147,12 +150,12 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (currentRound < totalRounds)
         {
             // clean up board state to redo round.
-          //  Tile.ResetTiles();
+            //  Tile.ResetTiles();
             // re-enable host's start round button
             if (PhotonNetwork.IsMasterClient)
                 startRoundButton.gameObject.SetActive(true);
 
-         //   inputManager.enabled = true;
+            //   inputManager.enabled = true;
             scoreBoard.NextRoundText.text = "To Round " + (currentRound + 1).ToString();
         }
         else
@@ -195,7 +198,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient)  // should never happen. If it did. Logic is wrong somewhere
             return;
 
-     //   ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/HostBoard"); // take a picture of host's board
+        //   ScreenCapture.CaptureScreenshot(Application.persistentDataPath + "/HostBoard"); // take a picture of host's board
 
         Tile[] tiles;
 
@@ -208,7 +211,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
         int[] IDs = new int[length];                        // each tile's ID
         Vector3[] positions = new Vector3[length];          // each tile's world position as Vector3
         Quaternion[] rotations = new Quaternion[length];    // each tile's rotation as a Quaternion
-        
+
         // populate arrays
         for (int i = 0; i < tiles.Length; i++)
         {
