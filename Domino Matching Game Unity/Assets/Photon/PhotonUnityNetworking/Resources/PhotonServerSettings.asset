@@ -47,6 +47,10 @@ MonoBehaviour:
   - ShowScorePanel
   - StartTimer
   - TimerDone
+  - UpdateReadyCheck
+  - ResetReadyButton
+  - FinishedEarly
+  - EnableReadyCheckButton
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

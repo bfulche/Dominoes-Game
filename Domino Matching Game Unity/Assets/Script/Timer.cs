@@ -16,7 +16,6 @@ public class Timer : MonoBehaviourPun
     // alerts subscribed functions when timer is up
     public delegate void TimerUp();
     public TimerUp timerDone;
-
     [SerializeField] GameObject toScoreboardButton;
 
     private void Start()
@@ -58,7 +57,10 @@ public class Timer : MonoBehaviourPun
                 InputManager.Instance.enabled = false;
 
                 if (PhotonNetwork.IsMasterClient)
+                {
+                    timeText.text = "Calculating Scores";
                     this.photonView.RPC("TimerDone", RpcTarget.All);
+                }
                 else
                     timeText.text = "Waiting on leader";
                 // timerDone?.Invoke();  //let subscribed functions know time is up.
@@ -81,6 +83,13 @@ public class Timer : MonoBehaviourPun
     public void TimerDone()
     {
         timerDone?.Invoke();
+    }
+
+
+    [PunRPC]
+    public void FinishedEarly()
+    {
+        timeRemaining = 0;        
     }
 
 
