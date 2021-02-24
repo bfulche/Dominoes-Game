@@ -23,7 +23,7 @@ public class ChatHandler : MonoBehaviourPun
 
     [SerializeField] InputField inputField;
 
-    [SerializeField] GameObject unreadNotificationmarker;
+  //  [SerializeField] GameObject unreadNotificationmarker;
 
     public int maxMessages = 1000;
 
@@ -53,7 +53,6 @@ public class ChatHandler : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-
         if (inputField.text != "" && inputField.gameObject.activeInHierarchy)
         {
             if (Input.GetKeyDown(KeyCode.Return))
@@ -102,10 +101,10 @@ public class ChatHandler : MonoBehaviourPun
         messageList.Add(newMessage);
 
         // check if chatbox if chatbox is currently selected. Otherwise leave an unread notification
-        if (!chatPanel.activeInHierarchy)
-        {
-            unreadNotificationmarker.SetActive(true);
-        }
+      // if (!chatPanel.activeInHierarchy)
+      // {
+      //     unreadNotificationmarker.SetActive(true);
+      // }
 
         ChatLogger.Instance.Log(chatBoxName, player, timeStamp, message);
     }

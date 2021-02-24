@@ -174,7 +174,7 @@ public class RoundManager : MonoBehaviourPunCallbacks
 
         // set current tab to Scoreboard and What happened
         tabGroup1.OnTabSelected(defaultTab1);
-        tabGroup2.OnTabSelected(defaultTab2);
+     //   tabGroup2.OnTabSelected(defaultTab2);
 
         timer.timeText.text = "";
     }
