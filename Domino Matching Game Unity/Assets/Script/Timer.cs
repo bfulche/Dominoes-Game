@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using Photon.Realtime;
 
 //This is the timer for the 2 minutes for each round. It's also used in the Debrief scenes although it doesn't need to be
 public class Timer : MonoBehaviourPun
@@ -12,6 +13,9 @@ public class Timer : MonoBehaviourPun
     private float timeRemaining = 2f;
     public bool timerIsRunning = false;
     public Text timeText;
+
+    public Text senderRules;
+    public Text receiverRules;
 
     // alerts subscribed functions when timer is up
     public delegate void TimerUp();
@@ -22,6 +26,17 @@ public class Timer : MonoBehaviourPun
     {
         // timerIsRunning = true;
         toScoreboardButton.SetActive(false);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            receiverRules.gameObject.SetActive(false);
+            senderRules.gameObject.SetActive(true);
+        }
+        else
+        {
+            receiverRules.gameObject.SetActive(true);
+            senderRules.gameObject.SetActive(false);
+        }
     }
 
     [PunRPC]
@@ -60,9 +75,14 @@ public class Timer : MonoBehaviourPun
                 {
                     timeText.text = "Calculating Scores";
                     this.photonView.RPC("TimerDone", RpcTarget.All);
+                    senderRules.gameObject.SetActive(false);
+                    receiverRules.gameObject.SetActive(false);
                 }
                 else
+                {
                     timeText.text = "Waiting on leader";
+                    receiverRules.gameObject.SetActive(false);
+                }
                 // timerDone?.Invoke();  //let subscribed functions know time is up.
 
                 // only allows host to host (master client) to view/press button to go to scoreboard

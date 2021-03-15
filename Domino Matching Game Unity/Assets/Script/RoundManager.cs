@@ -18,6 +18,9 @@ public class RoundManager : MonoBehaviourPunCallbacks
     private int currentRoundNumber;                 // The current round number, an int between 1-3
     public Text roundDisplay;                       // The UI text element displaying the current round
 
+    //public Text senderRules;                        // The text element at the top of each round displaying rules for the sender
+    //public Text receiverRules;                      // The text element at the top of each round displaying rules for the receiver
+
     private static readonly int totalRounds = 3;    // will always have 3 rounds to a level.
 
     [SerializeField] ScoreBoardMatrix scoreBoard;
@@ -40,7 +43,14 @@ public class RoundManager : MonoBehaviourPunCallbacks
         {
             // only show button for host
             startRoundButton.gameObject.SetActive(false);
+            //receiverRules.gameObject.SetActive(true);        //turn on receiver rules overhead text for the receiver
+            //senderRules.gameObject.SetActive(false);           //thurn off sender rules overhead text for the host
         }
+        /*else
+        {
+            receiverRules.gameObject.SetActive(false);
+            senderRules.gameObject.SetActive(true);
+        }*/
 
         currentRound = 0;   // start at the first round
         currentRoundNumber = currentRound + 1;      // Turning currentRoundNumber to 1 for UI display purposes

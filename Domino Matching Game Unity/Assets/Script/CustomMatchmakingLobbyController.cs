@@ -28,6 +28,9 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject roomListingPrefab;
 
+    public GameObject rulesPageOne;
+    public GameObject rulesPageTwo;
+
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
@@ -63,6 +66,25 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         mainPanel.SetActive(false);
         lobbyPanel.SetActive(true);
         PhotonNetwork.JoinLobby();
+    }
+
+
+    public void OpenRulesPage()           // this attaches to the button on the Lobby panel. 
+    {                                     // It will open a UI panel that contains the rules of the game
+        rulesPageOne.SetActive(true);
+        rulesPageTwo.SetActive(false);
+    }
+
+    public void CloseRulesPage()          //this is for the button to exit the rules page
+    {
+        rulesPageOne.SetActive(false);
+        rulesPageTwo.SetActive(false);
+    }
+
+    public void toRulesPageTwo()
+    {
+        rulesPageOne.SetActive(false);
+        rulesPageTwo.SetActive(true);
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)

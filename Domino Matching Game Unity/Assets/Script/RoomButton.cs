@@ -15,6 +15,7 @@ public class RoomButton : MonoBehaviour
     private int roomSize;
     private int playerCount;
 
+
     public void JoinRoomOnClick()
     {
         PhotonNetwork.JoinRoom(roomName);
