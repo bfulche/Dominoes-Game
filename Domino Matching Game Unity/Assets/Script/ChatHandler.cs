@@ -39,16 +39,16 @@ public class ChatHandler : MonoBehaviourPun
     // Time stamp stuff. placing here for now I guess
     CultureInfo culture = new CultureInfo("en-US");
 
-    void StressTest()
-    {
-        for (int i = 0; i < maxMessages; i++)
-        {
-            DateTime localDate = DateTime.Now;
-            string timeStamp = localDate.ToString("t", culture);
-            string[] parameters = new string[3] { playerName, timeStamp, ("This is message # " + (i + 1)) };
-            this.photonView.RPC("SendChatMessage", RpcTarget.All, parameters);
-        }
-    }
+  // void StressTest()
+  // {
+  //     for (int i = 0; i < maxMessages; i++)
+  //     {
+  //         DateTime localDate = DateTime.Now;
+  //         string timeStamp = localDate.ToString("t", culture);
+  //         string[] parameters = new string[3] { playerName, timeStamp, ("This is message # " + (i + 1)) };
+  //         this.photonView.RPC("SendChatMessage", RpcTarget.All, parameters);
+  //     }
+  // }
 
     // Update is called once per frame
     void Update()
@@ -67,10 +67,10 @@ public class ChatHandler : MonoBehaviourPun
                 inputField.Select();
             }
         }
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            StressTest();
-        }
+     //   if (Input.GetKeyDown(KeyCode.KeypadEnter))
+     //   {
+     //       StressTest();
+     //   }
 
         //  if (!inputField.isFocused)
         //  {
