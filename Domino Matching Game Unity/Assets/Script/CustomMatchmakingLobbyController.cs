@@ -10,8 +10,8 @@ using UnityEngine.UI;
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
 
-    [SerializeField]
-    private GameObject lobbyConnectButton;
+  //  [SerializeField]
+  //  private GameObject lobbyConnectButton;
     [SerializeField]
     private GameObject lobbyPanel;
     [SerializeField]
@@ -34,7 +34,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.AutomaticallySyncScene = true;
-        lobbyConnectButton.SetActive(true);
+   //     lobbyConnectButton.SetActive(true);
         roomListings = new List<RoomInfo>();
 
         if (PlayerPrefs.HasKey("NickName"))
@@ -114,7 +114,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     }
 
 
-    /*static*/ System.Predicate<RoomInfo> ByName(string name)
+    static System.Predicate<RoomInfo> ByName(string name)
     {
         return delegate (RoomInfo room)
         {

@@ -102,7 +102,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks, IInRoo
         if(PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.LoadLevel(1);
+            PhotonNetwork.LoadLevel(2);
         }
     }
 

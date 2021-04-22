@@ -22,4 +22,10 @@ public static class PhotonProperty
 
     // Player properties
     public static readonly string PlayerScore = "PlayerScore";
+
+    // 4/22: RPC function names. Will later update older RPCs to new naming convention and add to this list
+    public static readonly string ChangeLevelPreview = "RPC_ChangeLevelPreview";
+    public static readonly string UpdateLeaderText = "RPC_UpdateLeaderText";
+    public static readonly string UpdatePlayerList = "RPC_UpdatePlayerList";
+
 }

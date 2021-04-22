@@ -24,3 +24,6 @@ MonoBehaviour:
   playerHandVariant: {fileID: 8963717185692152276, guid: 460cd2ed8a279f946aa1fcab6065b7f0,
     type: 3}
   roundDuration: 120
+  levelName: Level 3
+  levelImage: {fileID: 21300000, guid: d37e803a22e7f6a4c86623657e0a447c, type: 3}
+  levelDescription: A harder level to put your communication skills to the test.

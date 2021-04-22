@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 430a1da06c41fd74f9e4d5f924e72fb2
+  - enabled: 1
     path: Assets/Scenes/Custom Matchmaking.unity
     guid: dc0480993888b554baf17dd66ef285ab
   - enabled: 1
     path: Assets/Scenes/LevelOneRoundOne.unity
-    guid: f7d841cd7810e5a41a89b74949b81c28
+    guid: be68bf9444bdcba469dc7237e38a4dc6
   m_configObjects: {}

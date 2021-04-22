@@ -22,3 +22,6 @@ MonoBehaviour:
   playerHandVariant: {fileID: -4346709414383357337, guid: 7623d198365cfb145ab1f446b1299401,
     type: 3}
   roundDuration: 120
+  levelName: Level 2
+  levelImage: {fileID: 21300000, guid: 1ba604324767207419d10b88c904d3d4, type: 3}
+  levelDescription: intermediate level. Decent communication practice.

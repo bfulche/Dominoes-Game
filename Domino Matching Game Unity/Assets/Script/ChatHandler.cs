@@ -67,10 +67,10 @@ public class ChatHandler : MonoBehaviourPun
                 inputField.Select();
             }
         }
-     //   if (Input.GetKeyDown(KeyCode.KeypadEnter))
-     //   {
-     //       StressTest();
-     //   }
+     //  if (Input.GetKeyDown(KeyCode.KeypadEnter))
+     //  {
+     //      StressTest();
+     //  }
 
         //  if (!inputField.isFocused)
         //  {

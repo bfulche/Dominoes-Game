@@ -21,3 +21,6 @@ MonoBehaviour:
   playerHandVariant: {fileID: 4570712331235152279, guid: 16f3027f189a27e41ab5e4128f5021cc,
     type: 3}
   roundDuration: 45
+  levelName: Level 1
+  levelImage: {fileID: 21300000, guid: df4c1211b6f825e448a97c49e859c88c, type: 3}
+  levelDescription: Introductory level while learning the controls of Digital Dominoes.

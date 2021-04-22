@@ -1,15 +1,16 @@
 ﻿using Photon.Pun;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 //This script works in the opening scene and allows players to join a created room
 
 public class RoomButton : MonoBehaviour
 {
     [SerializeField]
-    private Text nameText;
+    private TMP_Text nameText;
     [SerializeField]
-    private Text sizeText;
+    private TMP_Text sizeText;
 
     private string roomName;
     private int roomSize;
