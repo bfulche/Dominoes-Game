@@ -42,23 +42,17 @@ MonoBehaviour:
   - HideScorePanel
   - LoadNextLevel
   - RespawnSpaceship
+  - RPC_ChangeLevelPreview
   - RPC_CreatePlayer
   - RPC_LoadedGameScene
+  - RPC_UpdateLeaderText
+  - RPC_UpdatePlayerList
   - SendChatMessage
   - SetStartingLevel
   - ShowScorePanel
   - StartTimer
   - TimerDone
   - UpdateReadyCheck
-  - ChangeLevelPreview
-  - SendUpdatedPlayerList
-  - UpdateRoomData
-  - UpdateLeaderText
-  - UpdatePlayerCounter
-  - RPC_ChangeLevelPreview
-  - RPC_UpdateLeaderText
-  - RPC_UpdatePlayerCounter
-  - RPC_UpdatePlayerList
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
