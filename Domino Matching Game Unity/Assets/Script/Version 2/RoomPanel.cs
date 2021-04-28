@@ -157,7 +157,7 @@ public class RoomPanel : MonoBehaviourPunCallbacks
             // still getting the duplicating room listings bug... for now just sending people back to main menu scene
             // gives list chance to "refresh" until a proper fix can be found.
             hostLeftError.gameObject.SetActive(true);
-            hostLeftError.Text.text = string.Format("{0} has closed the game. returning to games list.", PhotonNetwork.MasterClient.NickName);
+            hostLeftError.Text.text = string.Format("{0} has closed the game. Returning to Main Menu.", otherPlayer.NickName);
        
             return;
 
