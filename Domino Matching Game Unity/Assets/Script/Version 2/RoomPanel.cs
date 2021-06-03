@@ -23,11 +23,14 @@ public class RoomPanel : MonoBehaviourPunCallbacks
     [SerializeField] TMP_Dropdown leaderSelectDropdown;
     [SerializeField] TMP_InputField leaderSelectTextBox; // for non hosts
 
+    [SerializeField] Toggle observerStatusToggle;
+
     [SerializeField] MatchMaking matchMaking;
 
     [SerializeField] TextRefHolder hostLeftError;
 
-    private List<string> cachedPlayerList;
+    private List<Player> cachedPlayerList;
+    private List<string> cachedPlayerListStrings;
     private LevelData data;
     private int roomMax;
     private int roomCurrent;
@@ -39,13 +42,48 @@ public class RoomPanel : MonoBehaviourPunCallbacks
         if (!PhotonNetwork.IsMasterClient)
             return;
 
-        this.photonView.RPC(PhotonProperty.ChangeLevelPreview, RpcTarget.AllBuffered, levelIndex);
+        this.photonView.RPC(PhotonProperty.ChangeLevelPreview, RpcTarget.All, levelIndex);
+
+        ExitGames.Client.Photon.Hashtable currentLevel = new ExitGames.Client.Photon.Hashtable();
+        currentLevel["CurrentLevel"] = levelIndex;
+
+        PhotonNetwork.CurrentRoom.SetCustomProperties(currentLevel);
     }
 
     public void OnLeaderDropDownChanged(int leaderIndex)
     {
         string newLeader = leaderSelectDropdown.options[leaderIndex].text;
-        photonView.RPC(PhotonProperty.UpdateLeaderText, RpcTarget.AllBuffered, newLeader);
+
+        // -1 because dropdown at index 0 isn't a player.
+        if (leaderIndex == 0)   // picked randomize leader
+        {
+            int random = Random.Range(0, cachedPlayerList.Count);
+            StartingGameLevel.designatedLeader = cachedPlayerList[random];
+            Debug.Log("Randomize leader selected. Randomized leader set to: " + StartingGameLevel.designatedLeader.NickName);
+        }
+        else
+        {
+            StartingGameLevel.designatedLeader = cachedPlayerList[leaderIndex - 1];
+            Debug.Log("Game Leader set to: " + StartingGameLevel.designatedLeader.NickName);
+        }
+        photonView.RPC(PhotonProperty.UpdateLeaderText, RpcTarget.All, newLeader);
+
+        ExitGames.Client.Photon.Hashtable Leader = new ExitGames.Client.Photon.Hashtable();
+
+        Leader["Leader"] = newLeader;
+    }
+
+    public void OnObserverStatusChanged(bool isObserving)
+    {
+        photonView.RPC(PhotonProperty.UpdatePlayerObservingState, RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer, isObserving);
+    }
+
+    [PunRPC]
+    public void RPC_UpdatePlayerObservingState(Player targetPlayer, bool newState)
+    {
+        // attempted safety measure for buffered rpc approach.
+        // if (targetPlayer != null)
+        targetPlayer.TagObject = newState;
     }
 
     [PunRPC]
@@ -97,13 +135,25 @@ public class RoomPanel : MonoBehaviourPunCallbacks
         // Only the master client has the updated list since it could change frequently.
         // Everyone else is sent the player name so their one dropdown option can be renamed to the player name.
 
-        cachedPlayerList = new List<string>();
+        cachedPlayerList = new List<Player>();
+        cachedPlayerListStrings = new List<string>();
         leaderSelectDropdown.ClearOptions();
 
-        cachedPlayerList.Add("Random Leader");
-        cachedPlayerList.Add(PhotonNetwork.MasterClient.NickName);
+        cachedPlayerList = PhotonNetwork.PlayerList.ToList();
+        cachedPlayerListStrings.Add("Random Leader");
 
-        leaderSelectDropdown.AddOptions(cachedPlayerList);
+        //    cachedPlayerList.Add(PhotonNetwork.MasterClient);
+        //     cachedPlayerListStrings.Add(PhotonNetwork.MasterClient.NickName);
+
+        foreach (Player player in cachedPlayerList)
+        {
+            cachedPlayerListStrings.Add(player.NickName);
+            // while we're here. Set tagObject to false in case we later become leader and play again
+            if (player.TagObject == null)
+                player.TagObject = false;
+        }
+
+        leaderSelectDropdown.AddOptions(cachedPlayerListStrings);
 
         #endregion
 
@@ -131,9 +181,10 @@ public class RoomPanel : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             int currentleader = leaderSelectDropdown.value;
-            cachedPlayerList.Add(newPlayer.NickName);
+            cachedPlayerList.Add(newPlayer);
+            cachedPlayerListStrings.Add(newPlayer.NickName);
             leaderSelectDropdown.ClearOptions();
-            leaderSelectDropdown.AddOptions(cachedPlayerList);
+            leaderSelectDropdown.AddOptions(cachedPlayerListStrings);
 
             leaderSelectDropdown.value = currentleader;
             leaderSelectDropdown.RefreshShownValue();
@@ -142,6 +193,7 @@ public class RoomPanel : MonoBehaviourPunCallbacks
         roomCurrent += 1;
         playerCounter.text = string.Format("{0}/{1}", roomCurrent, roomMax);
 
+        newPlayer.TagObject = false;
 
         photonView.RPC(PhotonProperty.UpdatePlayerList, RpcTarget.All);
     }
@@ -158,26 +210,29 @@ public class RoomPanel : MonoBehaviourPunCallbacks
             // gives list chance to "refresh" until a proper fix can be found.
             hostLeftError.gameObject.SetActive(true);
             hostLeftError.Text.text = string.Format("{0} has closed the game. Returning to Main Menu.", otherPlayer.NickName);
-       
+
             return;
 
         }
 
         if (PhotonNetwork.IsMasterClient)
         {
-            // if the selected leader left. Default back to host being random
+            // if the selected leader left. Default back to the host as the leader
             if (leaderSelectDropdown.options[leaderSelectDropdown.value].text == otherPlayer.NickName)
             {
-                leaderSelectDropdown.value = 0;
+                Debug.Log("Assigned leader has left the game. Defaulting to host.");
+                leaderSelectDropdown.value = 1;
                 leaderSelectDropdown.RefreshShownValue();
                 photonView.RPC(PhotonProperty.UpdateLeaderText, RpcTarget.Others, PhotonNetwork.MasterClient.NickName);
             }
 
+
             int currentleader = leaderSelectDropdown.value;
 
-            cachedPlayerList.Remove(otherPlayer.NickName);
+            cachedPlayerList.Remove(otherPlayer);
+            cachedPlayerListStrings.Remove(otherPlayer.NickName);
             leaderSelectDropdown.ClearOptions();
-            leaderSelectDropdown.AddOptions(cachedPlayerList);
+            leaderSelectDropdown.AddOptions(cachedPlayerListStrings);
             leaderSelectDropdown.value = currentleader;
             leaderSelectDropdown.RefreshShownValue();
         }
@@ -214,18 +269,39 @@ public class RoomPanel : MonoBehaviourPunCallbacks
             leaderSelectTextBox.gameObject.SetActive(false);
             leaderSelectDropdown.gameObject.SetActive(true);
             hostName = PhotonNetwork.MasterClient.NickName;
-            OnLevelDropDownChanged(0);
-            OnLeaderDropDownChanged(0);
+
+            StartCoroutine(DelayInitializeDropDownValues());
             //  leaderSelectDropdown.gameObject.SetActive(false);
             //   levelSelectDropdown.gameObject.SetActive(false);
 
-           // leaderSelectTextBox.gameObject.SetActive(true);
+            // leaderSelectTextBox.gameObject.SetActive(true);
         }
         else
         {
             hostName = PhotonNetwork.MasterClient.NickName;
             levelSelectDropdown.interactable = false;
+
+            int lvl = (int)PhotonNetwork.CurrentRoom.CustomProperties["CurrentLevel"];
+            // string leader = (string)PhotonNetwork.CurrentRoom.CustomProperties["Leader"];
+
+            //    Debug.Log("Leader from Custom properties: " + leader);
+            Debug.Log("Level from custom properties: " + lvl);
+            levelSelectDropdown.value = lvl;
+            RPC_ChangeLevelPreview(lvl);
+
+            RPC_UpdatePlayerList();
         }
+
+        PhotonNetwork.LocalPlayer.TagObject = false; // initialize observer state to false.
+    }
+
+    IEnumerator DelayInitializeDropDownValues()
+    {
+        yield return new WaitForEndOfFrame();
+
+        OnLevelDropDownChanged(0);
+        OnLeaderDropDownChanged(0);
+        photonView.RPC(PhotonProperty.UpdatePlayerList, RpcTarget.All);
     }
 
     #region UI Buttions
@@ -236,16 +312,51 @@ public class RoomPanel : MonoBehaviourPunCallbacks
         {
             StartingGameLevel.startingLevel = levelSelectDropdown.value;
 
+            List<Player> observerList = new List<Player>();
+
+            List<Player> eligiblePlayers = new List<Player>();
+
+            // build observer list AND active players list
+            for (int i = 0; i < cachedPlayerList.Count; i++)
+            {
+                if ((bool)cachedPlayerList[i].TagObject)
+                {
+                    Debug.Log("Player: " + cachedPlayerList[i].NickName + " is registered as an observer!");
+                    observerList.Add(cachedPlayerList[i]);
+                }
+                else
+                {
+                    eligiblePlayers.Add(cachedPlayerList[i]);
+                }
+            }
+
+            // if using random lead. Pick random lead now
+            if (leaderSelectDropdown.value == 0)
+            {
+                // assign random leader from eligible players
+                int random = Random.Range(0, eligiblePlayers.Count);
+                StartingGameLevel.designatedLeader = eligiblePlayers[random];
+                Debug.Log("Randomize leader selected. Randomized leader set to: " + StartingGameLevel.designatedLeader.NickName);
+            }
+            else
+            {
+                StartingGameLevel.designatedLeader = cachedPlayerList[leaderSelectDropdown.value - 1];
+                Debug.Log(StartingGameLevel.designatedLeader + " has been sent as the selected leader");
+            }
+
+            StartingGameLevel.observingPlayers = observerList;
+            StartingGameLevel.activePlayers = eligiblePlayers;
+
+
             PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.LoadLevel(2);
+            PhotonNetwork.LoadLevel(3);
         }
     }
 
     public void LeaveRoomLobby()
     {
-        // to circumvent the duplicate room listing bug... just sending leavers to main menu for now
-       // PhotonNetwork.LeaveRoom();
-      //  PhotonNetwork.LeaveLobby();
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LeaveLobby();
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene(0);
     }

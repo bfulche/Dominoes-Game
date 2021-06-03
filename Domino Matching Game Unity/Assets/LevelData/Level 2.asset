@@ -17,11 +17,18 @@ MonoBehaviour:
   - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
   - {fileID: 5238539502772703667, guid: 037c8e38331e8814595ae6e462bca9e4, type: 3}
   - {fileID: 3560837402697111590, guid: c6a257ac29e62b54f8fe9cf4f36f62ed, type: 3}
+  dominoPrefabs:
+  - {fileID: 9018493188724033633, guid: 0f6b72a15c0353544813884aa98157d7, type: 3}
+  - {fileID: 7588150337700601257, guid: 1033088855b1178438908615666551c7, type: 3}
+  - {fileID: 1800721418277219210, guid: 4e278c75cf073c143b797f994492917b, type: 3}
+  - {fileID: 7218454025238451560, guid: 812ba0b65c8bfde4089226c39a82f7d1, type: 3}
   cellVariant: {fileID: 146115479360634514, guid: 750963514f6d027448ca5b23c11290ed,
     type: 3}
+  board: {fileID: 4873624895588637522, guid: 750963514f6d027448ca5b23c11290ed, type: 3}
   playerHandVariant: {fileID: -4346709414383357337, guid: 7623d198365cfb145ab1f446b1299401,
     type: 3}
   roundDuration: 120
   levelName: Level 2
-  levelImage: {fileID: 21300000, guid: 1ba604324767207419d10b88c904d3d4, type: 3}
+  levelImage: {fileID: 21300000, guid: 5168f77965d62fe4e982e0cde039aa79, type: 3}
+  randomizedDominoes: 0
   levelDescription: intermediate level. Decent communication practice.

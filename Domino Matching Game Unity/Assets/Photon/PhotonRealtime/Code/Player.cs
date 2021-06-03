@@ -134,9 +134,27 @@ namespace Photon.Realtime
         /// <see cref="SetCustomProperties"/>
         public Hashtable CustomProperties { get; set; }
 
+
+        /// Added by Alex 5/6. Just adding delegate so I can track when TagObject value changes
+        public delegate void TagObjectChanged(object newObj);
+        public TagObjectChanged OnTagChanged;
+
+
         /// <summary>Can be used to store a reference that's useful to know "by player".</summary>
         /// <remarks>Example: Set a player's character as Tag by assigning the GameObject on Instantiate.</remarks>
-        public object TagObject;
+        /// Alex 5/6 - changed from public to Private and added Get;Set; below that fires delegate
+        private object tagObject;
+
+        public object TagObject
+        {
+            get { return tagObject; }
+            set
+            {
+                tagObject = value;
+                OnTagChanged?.Invoke(tagObject);
+            }
+        }
+
 
 
         /// <summary>

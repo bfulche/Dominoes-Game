@@ -106,7 +106,7 @@ public class ChatHandler : MonoBehaviourPun
       //     unreadNotificationmarker.SetActive(true);
       // }
 
-        ChatLogger.Instance.Log(chatBoxName, player, timeStamp, message);
+      //  ChatLogger.Instance.Log(chatBoxName, player, timeStamp, message);
     }
 }
 [System.Serializable]

@@ -19,11 +19,20 @@ MonoBehaviour:
   - {fileID: 5238539502772703667, guid: 037c8e38331e8814595ae6e462bca9e4, type: 3}
   - {fileID: 3560837402697111590, guid: c6a257ac29e62b54f8fe9cf4f36f62ed, type: 3}
   - {fileID: 5188146389693113403, guid: dfce36907a2b7884fae02a5fd6ac784b, type: 3}
+  dominoPrefabs:
+  - {fileID: 9018493188724033633, guid: 0f6b72a15c0353544813884aa98157d7, type: 3}
+  - {fileID: 7588150337700601257, guid: 1033088855b1178438908615666551c7, type: 3}
+  - {fileID: 9135504575368070941, guid: 9f049656edcc34e4e8deee2f479253bc, type: 3}
+  - {fileID: 1800721418277219210, guid: 4e278c75cf073c143b797f994492917b, type: 3}
+  - {fileID: 7218454025238451560, guid: 812ba0b65c8bfde4089226c39a82f7d1, type: 3}
+  - {fileID: 7746458379324106769, guid: e06cb200c47bb5345a946dfc7ab64ed8, type: 3}
   cellVariant: {fileID: 5392029996487421647, guid: f1ae8fe3f6985fc469acbfd76f36cd74,
     type: 3}
+  board: {fileID: 5530340636610733282, guid: f1ae8fe3f6985fc469acbfd76f36cd74, type: 3}
   playerHandVariant: {fileID: 8963717185692152276, guid: 460cd2ed8a279f946aa1fcab6065b7f0,
     type: 3}
   roundDuration: 120
   levelName: Level 3
-  levelImage: {fileID: 21300000, guid: d37e803a22e7f6a4c86623657e0a447c, type: 3}
+  levelImage: {fileID: 21300000, guid: cd4177f6c9cc6f445aad9bdab0a63ea4, type: 3}
+  randomizedDominoes: 0
   levelDescription: A harder level to put your communication skills to the test.

@@ -17,8 +17,12 @@ public class LevelData : ScriptableObject
 {
     [SerializeField] Tile[] tilePrefabs;
 
+    [SerializeField] Domino[] dominoPrefabs;
+
     [SerializeField] GameObject cellVariant; // holds the "cells layout" prefab used by this level
                                              // i.e. 4 cells in shape of square. 4 cells in + shape. etc
+
+    [SerializeField] GameBoard board;
 
     [SerializeField] PlayerHand playerHandVariant;  // Starting Tile position prefab to used for this level (hand with 4 slots, vs 6, etc)
 
@@ -28,16 +32,23 @@ public class LevelData : ScriptableObject
     [SerializeField] string levelName = "Nameless level";  // name appearing in level select dropdown
     [SerializeField] Sprite levelImage = null;  // level preview image appearing in game room setup
 
+    [SerializeField] int randomizedDominoes = 0;  // determines how many dominos will be randomly placed and locked
+                                            // for the leader each round
+
     [Multiline()]
     [SerializeField] string levelDescription = "No Description available";
 
 
     public int DominoCount => tilePrefabs.Length;
     public Tile[] TilePrefabs => tilePrefabs;
+    public Domino[] DominoPrefabs => dominoPrefabs;
     public GameObject CellVariant => cellVariant;
+    public GameBoard gameBoard => board;
     public PlayerHand PlayerHand => playerHandVariant;
     public float RoundDuration => roundDuration;
     public string LevelName => levelName;
     public Sprite LevelImage => levelImage;
     public string LevelDescription => levelDescription;
+
+    public int RandomizedDominoes => randomizedDominoes;
 }

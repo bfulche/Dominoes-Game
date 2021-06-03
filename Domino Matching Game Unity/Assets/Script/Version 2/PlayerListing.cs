@@ -1,24 +1,36 @@
-﻿using System.Collections;
+﻿using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerListing : MonoBehaviour
 {
-    [SerializeField] Image playerReadyCheck;
-    private bool ready = false;
+    [SerializeField] Image observerIcon;
+    Player thisPlayer;
 
-    public void Ready()
+    public void SetPlayer(Player trackedPlayer)
     {
-        ready = true;
-        playerReadyCheck.enabled = true;
+        thisPlayer = trackedPlayer;
+
+        thisPlayer.OnTagChanged += Observing;
+
+        if (trackedPlayer.TagObject != null)
+            Observing(trackedPlayer.TagObject);
     }
 
-    public void NotReady()
+    /// <summary>
+    /// For this project, player's tagObject will always indicate whether or not the player 
+    /// is an observer. Always treating the object as a boolean.
+    /// </summary>
+    /// <param name="newState"></param>
+    public void Observing(object newState)
     {
-        ready = false;
-        playerReadyCheck.enabled = false;
+        observerIcon.enabled = (bool)newState;
     }
-    
 
+    private void OnDisable()
+    {
+        thisPlayer.OnTagChanged -= Observing;
+    }
 }

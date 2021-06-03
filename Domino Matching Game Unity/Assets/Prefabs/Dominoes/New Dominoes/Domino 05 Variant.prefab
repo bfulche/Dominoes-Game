@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1507558873163774435, guid: bc8656819f7ad3543a976e4d1b21577e,
+        type: 3}
+      propertyPath: id
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7532301960430926618, guid: bc8656819f7ad3543a976e4d1b21577e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 7532301960430926622, guid: bc8656819f7ad3543a976e4d1b21577e,
         type: 3}
       propertyPath: m_Name
-      value: Domino 05
+      value: Domino 05 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7532301961666549348, guid: bc8656819f7ad3543a976e4d1b21577e,
         type: 3}

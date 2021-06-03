@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -18,7 +19,7 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
 {
     [SerializeField] GameObject lobbyPanel, roomPanel, roomFailurePanel;
 
-    [SerializeField] GameObject playerListingPrefab;
+    [SerializeField] PlayerListing playerListingPrefab;
 
     [SerializeField] Transform playersContainer;
 
@@ -27,6 +28,8 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private Dictionary<string, RoomInfo> cachedRoomList;
     private Dictionary<string, RoomButton> roomListEntries;
 
+    [SerializeField] GameObject hideOnConnect;
+    [SerializeField] GameObject showOnConnect;
 
     private void Awake()
     {
@@ -54,6 +57,9 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
             PhotonNetwork.NickName = "Player " + UnityEngine.Random.Range(0, 1000);
 
         PhotonNetwork.JoinLobby();
+
+        hideOnConnect.SetActive(false);
+        showOnConnect.SetActive(true);
     }
 
 
@@ -165,11 +171,13 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public override void OnJoinedRoom()
     {
         base.OnJoinedRoom();
-        lobbyPanel.SetActive(false);
-        roomPanel.SetActive(true);
+        SceneManager.LoadScene(2);
 
-        ClearPlayerListings();
-        ListPlayers();
+      //  lobbyPanel.SetActive(false);
+      //  roomPanel.SetActive(true);
+      //
+      //  ClearPlayerListings();
+      //  ListPlayers();
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -193,11 +201,13 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
     {
         foreach (Player player in PhotonNetwork.PlayerList)
         {
-            GameObject tempListing = Instantiate(playerListingPrefab, playersContainer);
+            PlayerListing tempListing = Instantiate(playerListingPrefab, playersContainer);
 
             TMP_Text tempText = tempListing.transform.GetChild(0).GetComponent<TMP_Text>();
 
             tempText.text = player.NickName;
+
+            tempListing.SetPlayer(player);
         }
     }
 
@@ -225,7 +235,7 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
     #region Room Creation Dialogue
 
     private string gameName = "New Game";
-    private int maxPlayers = 10;
+    private int maxPlayers = 16;
     private bool isPublic = true;
 
 
@@ -259,12 +269,12 @@ public class MatchMaking : MonoBehaviourPunCallbacks, IInRoomCallbacks
         if (t <= 0)
         {
             Debug.LogWarning("User attempted to set max player size as a negative or 0. Using default size 10");
-            t = 10;
+            t = 16;
         }
-        else if (t > 999)
+        else if (t > 16)
         {
-            Debug.LogWarning("User attempted to set max player size to greater than player cap of " + 999 + "using cap instead");
-            t = 999;
+            Debug.LogWarning("User attempted to set max player size to greater than player cap of " + 16 + "using cap instead");
+            t = 16;
         }
 
         maxPlayers = t;

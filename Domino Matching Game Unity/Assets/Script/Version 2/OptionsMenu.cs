@@ -19,19 +19,28 @@ public class OptionsMenu : MonoBehaviour
     #region Audio Options
     public void SetMasterVolume(float sliderValue)
     {
-        mixer.SetFloat("Master", Mathf.Log10(sliderValue) * 20);
+        float newVolume = Mathf.Log10(sliderValue) * 20;
+        mixer.SetFloat("Master", newVolume);
         AudioManager.Instance.Play("RotateDomino");
+
+        PlayerPrefs.SetFloat("MasterVolume", sliderValue);
     }
 
     public void SetSoundVolume(float sliderValue)
     {
-        mixer.SetFloat("Sound", Mathf.Log10(sliderValue) * 20);
+        float newVolume = Mathf.Log10(sliderValue) * 20;
+        mixer.SetFloat("Sound", newVolume);
         AudioManager.Instance.Play("RotateDomino");
+
+        PlayerPrefs.SetFloat("SoundVolume", sliderValue);
     }
 
     public void SetMusicVolume(float sliderValue)
     {
-        mixer.SetFloat("Music", Mathf.Log10(sliderValue) * 20);
+        float newVolume = Mathf.Log10(sliderValue) * 20;
+        mixer.SetFloat("Music", newVolume);
+
+        PlayerPrefs.SetFloat("MusicVolume", sliderValue);
     }
 
     #endregion
@@ -44,6 +53,14 @@ public class OptionsMenu : MonoBehaviour
     private void InitializePlayerInfoOptions()
     {
         playerNameText.text = PlayerPrefs.GetString("NickName");
+
+        float m = Mathf.Log10(PlayerPrefs.GetFloat("MasterVolume", 1f)) * 20;
+        float s = Mathf.Log10(PlayerPrefs.GetFloat("SoundVolume", 1f)) * 20;
+        float u = Mathf.Log10(PlayerPrefs.GetFloat("MusicVolume", 1f)) * 20;
+
+        mixer.SetFloat("Master", m);
+        mixer.SetFloat("Sound", s);
+        mixer.SetFloat("Music", u);
     }
 
     public void ChangePlayerName()

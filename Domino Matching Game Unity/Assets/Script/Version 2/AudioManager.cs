@@ -8,6 +8,9 @@ using System.Collections.Generic;
 /// </summary>
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField] AudioMixerGroup musicMixerGroup;
+    private float musicVolume;
+
     public Sound[] sounds;
 
     private static AudioManager _instance;
@@ -15,6 +18,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance => _instance;
 
     Dictionary<string, Sound> soundLibrary;
+
 
 
     void Awake()
@@ -48,7 +52,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-    //    Play("RotateDomino");
+        Play("Park Music");
     }
 
     public void Play(string name)
@@ -69,6 +73,17 @@ public class AudioManager : MonoBehaviour
         //  }
         //
         //  s.source.Play();
+    }
+
+    public void ForceMuteMusic()
+    {
+        musicMixerGroup.audioMixer.GetFloat("Music", out musicVolume);
+        musicMixerGroup.audioMixer.SetFloat("Music", -80f);
+    }
+
+    public void RestoreMusic()
+    {
+        musicMixerGroup.audioMixer.SetFloat("Music", musicVolume);
     }
 }
 

@@ -65,12 +65,17 @@ PrefabInstance:
     - target: {fileID: 3134834921458671380, guid: aa4894a3db3c2934bbdf82cc6a43d526,
         type: 3}
       propertyPath: m_Name
-      value: Domino 24
+      value: Domino 24 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3134834922638996078, guid: aa4894a3db3c2934bbdf82cc6a43d526,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1c5e0ac9c64a3694fbc061faf8ddcb93, type: 2}
+    - target: {fileID: 6332865609081298409, guid: aa4894a3db3c2934bbdf82cc6a43d526,
+        type: 3}
+      propertyPath: id
+      value: 16
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4894a3db3c2934bbdf82cc6a43d526, type: 3}

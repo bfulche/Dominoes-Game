@@ -4,52 +4,72 @@ using UnityEngine;
 
 public class DominoTray : MonoBehaviour
 {
-    public List<Transform> dominos;
+    public List<Domino> dominos;
 
     public Transform trayStartPosition; // location where to start adding dominos
 
     public Transform handDeck; // the tray reference;
 
-    public float howManyAdded; // how many dominos added so far
+    [SerializeField] private float dominoSpacing = 2.5f;
 
-    public Transform dominoToAdd;
+    public delegate void EmptyTray();
+    public EmptyTray OnTrayEmptied;
 
-    public Transform[] startingHand;
+
 
     /// <summary>
     /// Expecting array of domino prefabs
     /// </summary>
     /// <param name="startingDominos"></param>
-    public void CreateDominoHand(Transform[] startingDominos)
+    public void CreateDominoHand(Domino[] startingDominos)
     {
-        foreach (Transform domino in startingDominos)
+        foreach (Domino domino in startingDominos)
         {
-            Transform t = Instantiate(domino);
+            Domino t = Instantiate(domino);
             dominos.Add(t);
         }
 
         FitTray();
     }
 
-    public void AddNewTile()
+    public void AddDominoToTray(Domino newDomino)
     {
         // in actual gameplay, Tiles would only be added when you move a domino from the field, back to the tray
         if (dominos.Count > 8)
             return;
-        Transform t = Instantiate(dominoToAdd);
-        dominos.Add(t);
+       // Domino t = Instantiate(dominoToAdd);
+        dominos.Add(newDomino);
         FitTray();
     }
 
-    public void RemoveFirstTile()
+ //   public void RemoveFirstTile()
+ //   {
+ //       if (dominos.Count > 0)
+ //       {
+ //           Domino t = dominos[0];
+ //           dominos.Remove(t);
+ //         //  Destroy(t.gameObject);  // in actual gameplay. You'd just remove the reference to the list as the domino would be "on the field"
+ //           FitTray();
+ //       }
+ //   }
+
+    public void RemoveDomino(Domino selectedDomino)
     {
-        if (dominos.Count > 0)
+        if (dominos.Contains(selectedDomino))
         {
-            Transform t = dominos[0];
-            dominos.Remove(t);
-            Destroy(t.gameObject);  // in actual gameplay. You'd just remove the reference to the list as the domino would be "on the field"
+            dominos.Remove(selectedDomino);
             FitTray();
+
+            if (dominos.Count == 0)
+            {
+                OnTrayEmptied?.Invoke();
+            }
         }
+    }
+
+    public void ClearDominoTray()
+    {
+        dominos.Clear();
     }
 
     private void FitTray()
@@ -60,24 +80,7 @@ public class DominoTray : MonoBehaviour
         {
           //  dominos[i].position = trayStartPosition.position;
 
-            dominos[i].position = new Vector3((trayStartPosition.position.x + ((count - 1 - i) * -1.5f)), trayStartPosition.position.y, trayStartPosition.position.z);
+            dominos[i].transform.position = new Vector3((trayStartPosition.position.x + ((count - 1 - i) * -dominoSpacing)), trayStartPosition.position.y, trayStartPosition.position.z);
         }
     }
-
-  //  public void FitCards()
-  //  {
-  //      if (dominos.Count == 0)
-  //          return;
-  //
-  //  //    GameObject obj = dominos[0];
-  //
-  //      obj.transform.position = trayStartPosition.position;
-  //
-  //      obj.transform.position += new Vector3((howManyAdded * gapFromOneItemToTheNextOne), 0, 0);
-  //
-  //      obj.transform.SetParent(handDeck);
-  //
-  //      dominos.RemoveAt(0);
-  //      howManyAdded++;
-  //  }
 }

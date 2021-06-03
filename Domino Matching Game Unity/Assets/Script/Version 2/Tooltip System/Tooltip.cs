@@ -45,6 +45,13 @@ public class Tooltip : MonoBehaviour
     }
     private void Update()
     {
+        if (Application.isEditor)
+        {
+            int headerLength = headerField.text.Length;
+            int contentLength = contentField.text.Length;
+
+            layoutElement.enabled = (headerLength > characterWrapLimit || contentLength > characterWrapLimit) ? true : false;
+        }
         ReAnchorToCursor();
     }
 

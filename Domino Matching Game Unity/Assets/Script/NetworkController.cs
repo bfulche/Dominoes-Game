@@ -24,9 +24,4 @@ public class NetworkController : MonoBehaviourPunCallbacks
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4046993561524916690, guid: 14535538e9a7fc44591ef4e75296b30f,
         type: 3}
       propertyPath: m_Name
-      value: Domino 25
+      value: Domino 25 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4046993561524916694, guid: 14535538e9a7fc44591ef4e75296b30f,
         type: 3}
@@ -71,6 +71,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4920815106937377583, guid: 14535538e9a7fc44591ef4e75296b30f,
+        type: 3}
+      propertyPath: id
+      value: 17
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14535538e9a7fc44591ef4e75296b30f, type: 3}

@@ -53,6 +53,20 @@ MonoBehaviour:
   - StartTimer
   - TimerDone
   - UpdateReadyCheck
+  - UpdateDominoPosition
+  - UpdateDominoRotation
+  - RPC_UpdateDominoPosition
+  - RPC_UpdateDominoRotation
+  - Temp
+  - RPC_UpdatePlayerObservingState
+  - CreateDominos
+  - RPC_CreateDominoes
+  - RPC_SendInitialBoardState
+  - SetMimicTexture
+  - RPC_UpdateComparisonImages
+  - RPC_StartTimer
+  - RPC_ResetBoards
+  - RPC_SendReadyCheck
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

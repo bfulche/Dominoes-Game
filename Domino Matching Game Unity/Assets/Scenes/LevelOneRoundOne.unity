@@ -724,6 +724,7 @@ GameObject:
   - component: {fileID: 99626670}
   - component: {fileID: 99626671}
   - component: {fileID: 99626672}
+  - component: {fileID: 99626673}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -899,6 +900,18 @@ MonoBehaviour:
   timerScript: {fileID: 99626665}
   endRoundButton: {fileID: 1579221941}
   endRoundButtonText: {fileID: 2119422731}
+--- !u!114 &99626673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99626662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866a2302ee3cf5b459339d0919b59c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &101201070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,6 +1470,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabButtons: []
+  tabIdle: {fileID: 0}
+  tabHover: {fileID: 0}
+  tabActive: {fileID: 0}
   idleColor: {r: 1, g: 1, b: 1, a: 1}
   hoverColor: {r: 0.7513337, g: 0.754717, b: 0.28123888, a: 1}
   activeColor: {r: 0.22359847, g: 0.764151, b: 0.1477839, a: 1}
@@ -8466,7 +8482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1327881156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10447,6 +10463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tabButtons: []
+  tabIdle: {fileID: 0}
+  tabHover: {fileID: 0}
+  tabActive: {fileID: 0}
   idleColor: {r: 1, g: 1, b: 1, a: 1}
   hoverColor: {r: 0.7513337, g: 0.754717, b: 0.28123888, a: 1}
   activeColor: {r: 0.22359847, g: 0.764151, b: 0.1477839, a: 1}

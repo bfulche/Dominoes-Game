@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Custom Matchmaking.unity
     guid: dc0480993888b554baf17dd66ef285ab
   - enabled: 1
+    path: Assets/Scenes/JoinedWaitingRoom 1.unity
+    guid: 79f908c6340ff294a8658e8555af4877
+  - enabled: 0
+    path: Assets/Scenes/JoinedWaitingRoom.unity
+    guid: f2769d41c3ca7574abbb464693092988
+  - enabled: 1
+    path: Assets/Scenes/GamePlayLevel.unity
+    guid: f7d841cd7810e5a41a89b74949b81c28
+  - enabled: 0
     path: Assets/Scenes/LevelOneRoundOne.unity
     guid: be68bf9444bdcba469dc7237e38a4dc6
   m_configObjects: {}

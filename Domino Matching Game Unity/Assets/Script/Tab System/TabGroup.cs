@@ -6,9 +6,10 @@ public class TabGroup : MonoBehaviour
 {
     public List<TabButton> tabButtons;
     // could use colors instead
-  //  public Sprite tabIdle;
-  //  public Sprite tabHover;
-  //  public Sprite tabActive;
+    public Sprite tabIdle;
+    public Sprite tabHover;
+    public Sprite tabActive;
+
     public Color idleColor;
     public Color hoverColor;
     public Color activeColor;
@@ -30,7 +31,9 @@ public class TabGroup : MonoBehaviour
     {
         ResetTabs();
         if (selectedTab == null || button != selectedTab)
-            button.background.color = hoverColor;
+            //  button.background.color = hoverColor;
+            button.background.sprite = tabHover;
+        
     }
 
     public void OnTabExit(TabButton button)
@@ -49,7 +52,8 @@ public class TabGroup : MonoBehaviour
 
 
         ResetTabs();
-        button.background.color = activeColor;
+        button.background.sprite = tabActive;
+      //  button.background.color = activeColor;
         int index = button.transform.GetSiblingIndex();
 
         for(int i=0; i<objectsToSwap.Count; i++)
@@ -71,7 +75,8 @@ public class TabGroup : MonoBehaviour
         {
             if (selectedTab != null && button == selectedTab)
                 continue;
-            button.background.color = idleColor;
+            button.background.sprite = tabIdle;
+          //  button.background.color = idleColor;
         }
     }
 }

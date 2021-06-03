@@ -7,10 +7,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1792312991052177580, guid: 3f6bc7d5309479d46a2b2a7b3551cec8,
+        type: 3}
+      propertyPath: id
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7258785947165598289, guid: 3f6bc7d5309479d46a2b2a7b3551cec8,
         type: 3}
       propertyPath: m_Name
-      value: Domino 04
+      value: Domino 04 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7258785947165598293, guid: 3f6bc7d5309479d46a2b2a7b3551cec8,
         type: 3}

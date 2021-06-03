@@ -16,11 +16,17 @@ MonoBehaviour:
   - {fileID: 5188146389693113403, guid: dfce36907a2b7884fae02a5fd6ac784b, type: 3}
   - {fileID: 1375524740, guid: faf94103571e6ae4a92b8a9f26aa050e, type: 3}
   - {fileID: 2830069238789329041, guid: 6c6517b60bc0d404c9df6664814ff778, type: 3}
+  dominoPrefabs:
+  - {fileID: 7746458379324106769, guid: e06cb200c47bb5345a946dfc7ab64ed8, type: 3}
+  - {fileID: 9018493188724033633, guid: 0f6b72a15c0353544813884aa98157d7, type: 3}
+  - {fileID: 7588150337700601257, guid: 1033088855b1178438908615666551c7, type: 3}
   cellVariant: {fileID: 6313879092927434444, guid: 7944c2bb93d7c0f46a82346cd7882f5c,
     type: 3}
+  board: {fileID: 4541406063015468462, guid: 7944c2bb93d7c0f46a82346cd7882f5c, type: 3}
   playerHandVariant: {fileID: 4570712331235152279, guid: 16f3027f189a27e41ab5e4128f5021cc,
     type: 3}
   roundDuration: 45
   levelName: Level 1
-  levelImage: {fileID: 21300000, guid: df4c1211b6f825e448a97c49e859c88c, type: 3}
+  levelImage: {fileID: 21300000, guid: f17eab95c75d64b42a326601e382fca9, type: 3}
+  randomizedDominoes: 0
   levelDescription: Introductory level while learning the controls of Digital Dominoes.

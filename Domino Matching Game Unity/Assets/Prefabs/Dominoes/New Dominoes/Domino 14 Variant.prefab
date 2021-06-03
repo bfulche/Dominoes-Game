@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2188704803479287020, guid: 8f2223e50b4e65248967e4168b2c7f7d,
+        type: 3}
+      propertyPath: id
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 7078575711495396203, guid: 8f2223e50b4e65248967e4168b2c7f7d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15,7 +20,7 @@ PrefabInstance:
     - target: {fileID: 7078575712395752977, guid: 8f2223e50b4e65248967e4168b2c7f7d,
         type: 3}
       propertyPath: m_Name
-      value: Domino 14
+      value: Domino 14 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7078575712395752981, guid: 8f2223e50b4e65248967e4168b2c7f7d,
         type: 3}

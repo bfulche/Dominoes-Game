@@ -24,7 +24,7 @@ public class EndRoundEarlyHandler : MonoBehaviourPun
     void Start()
     {
         // only bother if we're the host
-        if (PhotonNetwork.IsMasterClient)
+        if (GameplayManager.Instance.IsGameLeader)
         {
             endRoundButtonText.text = "End Round";
             endRoundButton.interactable = false;
@@ -35,7 +35,7 @@ public class EndRoundEarlyHandler : MonoBehaviourPun
         }
         else
         {
-            endRoundButtonText.text = "Ready";
+            endRoundButtonText.text = "Submit";
         }
 
         timerScript.timerDone += ResetReadyButton;
@@ -92,7 +92,7 @@ public class EndRoundEarlyHandler : MonoBehaviourPun
         else
         {
             endRoundButton.interactable = true;
-            endRoundButtonText.text = "Ready";
+            endRoundButtonText.text = "Submit";
         }
 
         endRoundButton.gameObject.SetActive(false);

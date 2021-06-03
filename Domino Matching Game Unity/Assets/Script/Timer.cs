@@ -48,6 +48,16 @@ public class Timer : MonoBehaviourPun
         LevelManager.Instance.LoadMimicLevel();
     }
 
+    // 5/13 The test worked. Needed some extra steps. but basically the plan is to have host send texture on BeginRound button click
+    // the received texture will be used to update the scoring screen's "Host view" image. No more rebuilding domino board
+    [SerializeField] RawImage tempTestPicSend;
+    [SerializeField] Texture localTexture;
+    [PunRPC]
+    public void SetMimicTexture(Texture texture)
+    {
+        tempTestPicSend.texture = texture;
+    }
+
     public void SetRoundTimer(float duration)
     {
         startTime = duration;

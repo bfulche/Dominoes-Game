@@ -27,5 +27,12 @@ public static class PhotonProperty
     public static readonly string ChangeLevelPreview = "RPC_ChangeLevelPreview";
     public static readonly string UpdateLeaderText = "RPC_UpdateLeaderText";
     public static readonly string UpdatePlayerList = "RPC_UpdatePlayerList";
-
+    public static readonly string UpdateDominoPosition = "RPC_UpdateDominoPosition";
+    public static readonly string UpdateDominoRotation = "RPC_UpdateDominoRotation";
+    public static readonly string UpdatePlayerObservingState = "RPC_UpdatePlayerObservingState";
+    public static readonly string CreateDominoes = "RPC_CreateDominoes";
+    public static readonly string UpdateComparisonImages = "RPC_UpdateComparisonImages";
+    public static readonly string StartTimer = "RPC_StartTimer";
+    public static readonly string ResetBoards = "RPC_ResetBoards";
+    public static readonly string SendReadyCheck = "RPC_SendReadyCheck";
 }
