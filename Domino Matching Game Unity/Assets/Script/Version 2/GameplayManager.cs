@@ -227,6 +227,7 @@ public class GameplayManager : MonoBehaviourPun
 
         scoreBoardVisual.SetActive(true);
 
+        readySubmitButton.SetActive(false);
         if (currentRound >= 2)
         {
             nextRoundButton.SetActive(false);
